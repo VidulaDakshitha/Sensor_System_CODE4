@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Apr 23, 2020 at 04:22 PM
--- Server version: 5.7.21
--- PHP Version: 7.1.16
+-- Host: 127.0.0.1
+-- Generation Time: Apr 26, 2020 at 07:04 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,32 +25,120 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `admins`
+--
+
+CREATE TABLE `admins` (
+  `id` int(11) NOT NULL,
+  `name` varchar(150) NOT NULL,
+  `email` varchar(150) NOT NUll,
+  `username` varchar(150) NOT NULL,
+  `password` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`id`, `name`, `email`, `username`, `password`) VALUES
+(1, 'admin', 'codefoursliit@gmail.com', 'admin1', '123');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `clients` (
+  `id` int(11) NOT NULL,
+  `name` varchar(150) NOT NULL,
+  `email` varchar(150) NOT NULL,
+  `room` int(5) NOT NULL,
+  `phone` varchar(15) NOT NUll
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `clients`
+--
+
+INSERT INTO `clients` (`id`, `name`, `email`, `room`, `phone`) VALUES
+(1, 'vidula', 'viduladakshitha@gmail.com', 1, '+94779819207'),
+(2, 'kevin gomez', 'kevingomez890@gmail.com', 2 ,'+94771986561'),
+(3, 'Dilshan Harendra', 'dilshanharendraperera123@gmail.com', 3, '+94783253430'),
+(4, 'Sathira Lamal', 'sdsat756@gmail.com', 4, '+94717732324');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `sensors`
 --
 
-DROP TABLE IF EXISTS `sensors`;
-CREATE TABLE IF NOT EXISTS `sensors` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `sensors` (
+  `id` int(11) NOT NULL,
   `name` varchar(100) DEFAULT NULL,
   `room` varchar(100) DEFAULT NULL,
   `floor` varchar(100) DEFAULT NULL,
   `colevel` double DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+  `smokelevel` double DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sensors`
 --
 
-INSERT INTO `sensors` (`id`, `name`, `room`, `floor`, `colevel`) VALUES
-(1, 'sensor 1', 'room 1', 'floor 1', 50),
-(2, 'sensor 2', 'room 2', 'floor 2', 70),
-(3, 'sensor 3', 'room 3', 'fllo 3', 50),
-(4, ' sensor 4 ', ' room 4  ', ' floor 4 ', 0),
-(5, ' sensor 4 ', ' room 4  ', ' floor 4 ', 0),
-(6, ' sensor 4 ', ' room 4  ', ' floor 4 ', 0),
-(7, ' sensor 5 ', ' room 5 ', ' floor 5 ', 0),
-(8, ' sensor6 ', ' room 6 ', ' floor 6 ', 0);
+INSERT INTO `sensors` (`id`, `name`, `room`, `floor`, `colevel`, `smokelevel`) VALUES
+(1, 'sensor 1', 'room 1', 'floor 1', 10, 10),
+(2, 'sensor 2', 'room 2', 'floor 2', 10, 10),
+(3, 'sensor 3', 'room 3', 'floor 3', 10, 10),
+(4, ' sensor 4 ', ' room 4  ', ' floor 4 ', 0, 0),
+(5, ' sensor 5 ', ' room 4  ', ' floor 4 ', 0, 0),
+(6, ' sensor 6 ', ' room 4  ', ' floor 4 ', 0, 0),
+(7, ' sensor 7 ', ' room 5 ', ' floor 5 ', 0, 0),
+(8, ' sensor 8 ', ' room 6 ', ' floor 6 ', 0, 0);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admins`
+--
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `clients`
+--
+ALTER TABLE `clients`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sensors`
+--
+ALTER TABLE `sensors`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admins`
+--
+ALTER TABLE `admins`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `clients`
+--
+ALTER TABLE `clients`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `sensors`
+--
+ALTER TABLE `sensors`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
