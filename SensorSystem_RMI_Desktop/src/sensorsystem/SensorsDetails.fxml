@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sensorsystem.SensorsDetailsController">
+   <children>
+      <VBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <TableView fx:id="sensorTable" prefHeight="569.0" prefWidth="967.0" VBox.vgrow="ALWAYS">
+              <columns>
+                <TableColumn fx:id="name" prefWidth="388.0" text="Sensor Name" />
+                <TableColumn fx:id="floor" minWidth="0.0" prefWidth="200.0" text=" Room Name/id" />
+                  <TableColumn fx:id="room" minWidth="0.0" prefWidth="200.0" text="Floor Name/ID" />
+                  <TableColumn fx:id="colavel" minWidth="0.0" prefWidth="184.0" text="Co2 Lavel" />
+              </columns>
+               <columnResizePolicy>
+                 
+               </columnResizePolicy>
+            </TableView>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
