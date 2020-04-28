@@ -70,12 +70,14 @@ public class EditSensorController implements Initializable {
         sFloor.setText(ob2);
         sRoom.setText(ob3);
         
-        if(ob4 == "Active")
+        if(ob4.equals("Active"))
         {
             Active.setSelected(true);
         }
-        else
+        else{
             Inactive.setSelected(true);
+        }
+            
     }
     
     

@@ -71,6 +71,7 @@ public class SensorsDetailsController implements Initializable{
     @FXML
     private TableColumn<?, ?> colavel;
     
+    
 
     /**
      * Initializes the controller class.
@@ -80,8 +81,13 @@ public class SensorsDetailsController implements Initializable{
     
     );
     ArrayList<Integer> sensorId;
+    @FXML
+    private TableColumn<?, ?> smokelevel;
+    @FXML
+    private TableColumn<?, ?> status;
     
-    @Override
+    
+    @Override 
     public void initialize(URL url, ResourceBundle rb) {
         sensorId= new ArrayList<>();
          
@@ -93,6 +99,10 @@ public class SensorsDetailsController implements Initializable{
             floor.setCellValueFactory(new PropertyValueFactory<>("floor"));
             room.setCellValueFactory(new PropertyValueFactory<>("room"));
             colavel.setCellValueFactory(new PropertyValueFactory<>("colevel"));
+            
+            status.setCellValueFactory(new PropertyValueFactory<>("status"));
+            smokelevel.setCellValueFactory(new PropertyValueFactory<>("smoke"));
+            
             sensorTable.setItems(observableList);
            
 //         EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>(){ 
@@ -117,7 +127,7 @@ public class SensorsDetailsController implements Initializable{
                     String tempFloor = pos.getFloor();
                     String tempRoom = pos.getRoom();
                     String status = pos.getStatus();
-
+                        System.out.println("This statt: " + status);
                     
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("editSensor.fxml"));
                     Parent root = (Parent) fxmlLoader.load();
@@ -142,14 +152,19 @@ public class SensorsDetailsController implements Initializable{
             JSONArray jSONArray = new JSONArray(data);
                 
             System.out.println(jSONArray.length());
-                
+               
             for (int i = 0; i < jSONArray.length(); i++) {
                 JSONObject jSONObject = jSONArray.getJSONObject(i);
                 System.out.println(jSONObject);
                 sensorId.add(Integer.parseInt(jSONObject.get("id").toString().trim()));
-                Sensor sensor =new Sensor(Integer.parseInt(jSONObject.get("id").toString().trim()),jSONObject.get("name").toString().trim(), jSONObject.get("floor").toString().trim(), jSONObject.get("room").toString().trim(),Double.parseDouble(jSONObject.get("colevel").toString()), jSONObject.get("status").toString().trim() );
+                Sensor sensor =new Sensor(Integer.parseInt(jSONObject.get("id").toString().trim()),jSONObject.get("name").toString().trim(), jSONObject.get("floor").toString().trim(), jSONObject.get("room").toString().trim(),Double.parseDouble(jSONObject.get("colevel").toString()), jSONObject.get("status").toString().trim(),Double.parseDouble(jSONObject.get("smokelevel").toString()) );
                 sensorTable.getItems().add(sensor);
-                System.out.println(sensor.getName());
+                System.out.println("smoke level "+sensor.getSmokeLevel());
+                System.out.println("status "+sensor.getStatus());
+                System.out.println("fact status"+status.getCellData(i));
+                System.out.println("fact "+smokelevel.getCellData(i));
+                
+                
                   if (sensor.getLevel()>=70) {
                   System.out.println("co2 wadi "+sensor.getName());
                     Notifications.create()
@@ -198,9 +213,10 @@ public class SensorsDetailsController implements Initializable{
             for (int i = 0; i < jSONArray.length(); i++) {
                 JSONObject jSONObject = jSONArray.getJSONObject(i);
                 //System.out.println(jSONObject);
-                Sensor sensor =new Sensor(Integer.parseInt(jSONObject.get("id").toString().trim()),jSONObject.get("name").toString().trim(), jSONObject.get("floor").toString().trim(), jSONObject.get("room").toString().trim(),Double.parseDouble(jSONObject.get("colevel").toString()), jSONObject.get("status").toString().trim() );
+                Sensor sensor =new Sensor(Integer.parseInt(jSONObject.get("id").toString().trim()),jSONObject.get("name").toString().trim(), jSONObject.get("floor").toString().trim(), jSONObject.get("room").toString().trim(),Double.parseDouble(jSONObject.get("colevel").toString()), jSONObject.get("status").toString().trim(),Double.parseDouble(jSONObject.get("smokelevel").toString()) );
                 sensorTable.getItems().add(sensor);
-                //System.out.println(sensor.getName());
+                System.out.println("smoke level "+sensor.getSmokeLevel());
+                System.out.println("status "+sensor.getStatus());
                 if (sensor.getLevel()>=70) {
                   /*  System.out.println("co2 wadi "+sensor.getName());
                     Notifications.create()
