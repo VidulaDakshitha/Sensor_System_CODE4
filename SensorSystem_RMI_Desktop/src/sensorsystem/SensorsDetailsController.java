@@ -70,7 +70,7 @@ public class SensorsDetailsController implements Initializable{
     private TableColumn<?, ?> room;
     @FXML
     private TableColumn<?, ?> colavel;
-    private boolean Editable = false;
+    
 
     /**
      * Initializes the controller class.
@@ -80,15 +80,7 @@ public class SensorsDetailsController implements Initializable{
     
     );
     ArrayList<Integer> sensorId;
-    public boolean edit()
-    {
-        return this.Editable;
-    }
     
-    public void setEditable(boolean value)
-    {
-        this.Editable = value;
-    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         sensorId= new ArrayList<>();
@@ -124,12 +116,14 @@ public class SensorsDetailsController implements Initializable{
                     String tempName = pos.getName();
                     String tempFloor = pos.getFloor();
                     String tempRoom = pos.getRoom();
+                    String status = pos.getStatus();
+
                     
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("editSensor.fxml"));
                     Parent root = (Parent) fxmlLoader.load();
         
                     EditSensorController controller = fxmlLoader.getController();
-                    controller.transferData(editID, tempName, tempFloor, tempRoom);
+                    controller.transferData(editID, tempName, tempFloor, tempRoom, status);
         
                     Stage stage = new Stage();
                     stage.setScene(new Scene(root));  
@@ -153,7 +147,7 @@ public class SensorsDetailsController implements Initializable{
                 JSONObject jSONObject = jSONArray.getJSONObject(i);
                 System.out.println(jSONObject);
                 sensorId.add(Integer.parseInt(jSONObject.get("id").toString().trim()));
-                Sensor sensor =new Sensor(Integer.parseInt(jSONObject.get("id").toString().trim()),jSONObject.get("name").toString().trim(), jSONObject.get("floor").toString().trim(), jSONObject.get("room").toString().trim(),Double.parseDouble(jSONObject.get("colevel").toString()) );
+                Sensor sensor =new Sensor(Integer.parseInt(jSONObject.get("id").toString().trim()),jSONObject.get("name").toString().trim(), jSONObject.get("floor").toString().trim(), jSONObject.get("room").toString().trim(),Double.parseDouble(jSONObject.get("colevel").toString()), jSONObject.get("status").toString().trim() );
                 sensorTable.getItems().add(sensor);
                 System.out.println(sensor.getName());
                   if (sensor.getLevel()>=70) {
@@ -164,17 +158,6 @@ public class SensorsDetailsController implements Initializable{
                     .showWarning();
                 }
             }
-           if(edit() == true)
-           {
-            Timer timer = new Timer();
-            timer.scheduleAtFixedRate(new TimerTask() {
-                @Override
-                public void run() {
-                    updatetable();
-                    setEditable(false);
-                }
-            }, 0, 1000);
-           }
             
             
             Timer timer = new Timer();
@@ -215,7 +198,7 @@ public class SensorsDetailsController implements Initializable{
             for (int i = 0; i < jSONArray.length(); i++) {
                 JSONObject jSONObject = jSONArray.getJSONObject(i);
                 //System.out.println(jSONObject);
-                Sensor sensor =new Sensor(Integer.parseInt(jSONObject.get("id").toString().trim()),jSONObject.get("name").toString().trim(), jSONObject.get("floor").toString().trim(), jSONObject.get("room").toString().trim(),Double.parseDouble(jSONObject.get("colevel").toString()) );
+                Sensor sensor =new Sensor(Integer.parseInt(jSONObject.get("id").toString().trim()),jSONObject.get("name").toString().trim(), jSONObject.get("floor").toString().trim(), jSONObject.get("room").toString().trim(),Double.parseDouble(jSONObject.get("colevel").toString()), jSONObject.get("status").toString().trim() );
                 sensorTable.getItems().add(sensor);
                 //System.out.println(sensor.getName());
                 if (sensor.getLevel()>=70) {

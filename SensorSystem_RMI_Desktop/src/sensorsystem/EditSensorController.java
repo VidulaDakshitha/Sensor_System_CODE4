@@ -18,7 +18,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
@@ -37,8 +39,6 @@ public class EditSensorController implements Initializable {
     @FXML
     private VBox addNewVbox;
     @FXML
-    private Label message;
-    @FXML
     private TextField sName;
     @FXML
     private TextField sFloor;
@@ -50,18 +50,32 @@ public class EditSensorController implements Initializable {
     private int editId;
     
     private SensorService sensorService = null;
+
+    @FXML
+    private RadioButton Active;
+    @FXML
+    private RadioButton Inactive;
     /**
      * Initializes the controller class.
      */
     
+    ToggleGroup mainGroup;
     
     
     
-    public void transferData(int id, String ob1, String ob2, String ob3) {
+    
+    public void transferData(int id, String ob1, String ob2, String ob3, String ob4) {
         this.editId = id;
         sName.setText(ob1);
         sFloor.setText(ob2);
         sRoom.setText(ob3);
+        
+        if(ob4 == "Active")
+        {
+            Active.setSelected(true);
+        }
+        else
+            Inactive.setSelected(true);
     }
     
     
@@ -72,7 +86,11 @@ public class EditSensorController implements Initializable {
        try {
              Registry reg =LocateRegistry.getRegistry("127.0.0.1",2000);
             sensorService = (SensorService) reg.lookup("sensorServer");
-           
+            
+            
+            mainGroup = new ToggleGroup();
+            Active.setToggleGroup(mainGroup);
+            Inactive.setToggleGroup(mainGroup);
  
         } catch (Exception e) {
             
@@ -84,12 +102,22 @@ public class EditSensorController implements Initializable {
 
     @FXML
     private void editSensor(MouseEvent event) {
-        String name,floor,room;
+        String name,floor,room, status;
         int id;
         id = editId;
+        
         name=sName.getText().toString();
         floor=sFloor.getText().toString();
         room=sRoom.getText().toString();
+       
+        if(Active.isSelected())
+            status = "Active";
+        
+        else
+            status = "Inactive";
+        
+        System.out.println(status);
+        
         if (name.equals("") || floor.equals("") || room.equals("")) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Warining");
@@ -98,18 +126,17 @@ public class EditSensorController implements Initializable {
                     if (rs == ButtonType.OK) {
                         System.out.println("Pressed OK.");
                     }
-                 }); 
+                 });
+                
+                       
         }else{
-              sName.setText("");
-              sFloor.setText("");
-              sRoom.setText("");
+              
              try {
-                  System.out.println(id + name + floor + room);
-                String newMess= sensorService.editSensor(id, name, floor, room);
+                String newMess= sensorService.editSensor(id, name, floor, room, status);
                   if (newMess.startsWith("Edited")) {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Successfull");
-               alert.setHeaderText("Sensor "+name+" Add successfully");
+               alert.setHeaderText("Sensor: "+name+" Edited successfully");
                 alert.showAndWait().ifPresent(rs -> {
                     if (rs == ButtonType.OK) {
                         System.out.println("Pressed OK.");

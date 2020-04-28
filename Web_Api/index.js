@@ -172,7 +172,7 @@ app.post('/editSensor',async function (req,res){
 
     try {
 
-        var query="UPDATE `sensors` SET `name`='"+req.body.name+"', `floor`='"+req.body.floor+"' WHERE id="+req.body.id+" LIMIT 1 ";
+        var query="UPDATE `sensors` SET `name`='"+req.body.name+"', `floor`='"+req.body.floor+"', `room`='"+req.body.floor+"', `status`='"+req.body.status+"' WHERE id="+req.body.id+" LIMIT 1 ";
        console.log(query);
         con.query(query,await function (err, result) {
             if (err) {

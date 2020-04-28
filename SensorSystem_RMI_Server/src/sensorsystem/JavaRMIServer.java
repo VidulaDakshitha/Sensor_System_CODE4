@@ -203,16 +203,16 @@ public class JavaRMIServer extends UnicastRemoteObject implements SensorService{
     }
 
     @Override
-    public String editSensor(int id, String name, String room, String floor) throws Exception {
+    public String editSensor(int id, String name, String room, String floor, String status) throws Exception {
         try {
             JSONObject jSONObject = new JSONObject();
             
             jSONObject.put("name",name);
             jSONObject.put("room",room);
             jSONObject.put("floor",floor);
+            jSONObject.put("status",status);
             jSONObject.put("id",id );
             
-            System.out.println(id + name + room + floor);
             byte[] postData =jSONObject.toString().getBytes(StandardCharsets.UTF_8);
             int length=postData.length;
              URL url = new URL("http://localhost:3000/editSensor");
