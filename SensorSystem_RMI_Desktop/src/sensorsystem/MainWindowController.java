@@ -120,7 +120,8 @@ public class MainWindowController implements Initializable {
     }
 
     @FXML
-    private void showSensors(MouseEvent event) throws IOException {
+   
+ private void showSensors(MouseEvent event) throws IOException {
         Parent root =FXMLLoader.load(getClass().getResource("SensorsDetails.fxml"));
         
         Scene scene =  addbtn.getScene();
@@ -139,6 +140,17 @@ public class MainWindowController implements Initializable {
          addbtn.setTextFill(Color.GRAY);
         sensorbtn.setTextFill(Color.AQUA);
     }
+
+
+
+
+
+
+
+
+
+
+
     private void ShowAddNew(Boolean x){
         if (x) {
              addNewBox.setPrefWidth(0);
