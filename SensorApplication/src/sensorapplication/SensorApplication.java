@@ -35,7 +35,7 @@ public class SensorApplication {
      public String updateSernsorLevel(int id, double lavel, double smokeLevel) throws Exception {
        //To change body of generated methods, choose Tools | Templates.
      try {
-            System.out.println(smokeLevel);
+            
             JSONObject jSONObject = new JSONObject();
             jSONObject.put("lavel",lavel );
             jSONObject.put("smokeLevel",smokeLevel);
@@ -73,7 +73,11 @@ public class SensorApplication {
      
      public void getSensorId()
      {
+         int count=0;
+         
+        
         sensorId= new ArrayList<>();
+        
           try {
 
              
@@ -91,9 +95,17 @@ public class SensorApplication {
               for (int i = 0; i < jSONArray.length(); i++) {
                 JSONObject jSONObject = jSONArray.getJSONObject(i);
                 int val=Integer.parseInt(jSONObject.get("id").toString());
-                sensorId.add(val);
+                String Senstatus=jSONObject.get("status").toString();
+                  System.out.println("Senstatus "+Senstatus);
+                if(Senstatus.equals("Active"))
+                {
+                    count=count+1;
+                    sensorId.add(val);
+                }
+                
                
               }
+              System.out.println("count"+count);
           }catch(Exception e)
           {
                System.err.println("err "+e);
@@ -101,18 +113,25 @@ public class SensorApplication {
          
      }
      
+     
+ 
+     
        private void updateLavel(){
       DecimalFormat f = new DecimalFormat("##.00");
+      DecimalFormat f2 = new DecimalFormat("##.00");
       try {
          for (Integer id : sensorId) {
              Random r= new Random();
              Random r2= new Random();
              int rangeMin=0,rangeMax=10;
              
+             
           double level = Double.parseDouble( f.format(rangeMin + (rangeMax - rangeMin) * r.nextDouble()));
-          double smoke = Double.parseDouble( f.format(rangeMin + (rangeMax - rangeMin) * r2.nextDouble()));
+          double smoke = Double.parseDouble( f2.format(rangeMin + (rangeMax - rangeMin) * r2.nextDouble()));
           String data = updateSernsorLevel(id,level,smoke);
+          
       } 
+         
       } catch (Exception e) {
            System.err.println("error "+e);
       }
@@ -134,6 +153,7 @@ public class SensorApplication {
                 @Override
                 public void run()  {
                     try {
+                        sensorApp.getSensorId();
                         sensorApp.updateLavel();
                     } catch (Exception ex) {
                         Logger.getLogger(SensorApplication.class.getName()).log(Level.SEVERE, null, ex);
