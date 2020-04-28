@@ -1,135 +1,140 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<title>Sensor System</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-  <style>
-	  body{
-
-
-	  }
-	  table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-.tr:nth-child(even) {
-  background-color: #dddddd;
-}
-	  h1{
-		  text-align: center;
-		  padding: 20px;
-		  color: #F8004D;
-	  }
-	  .danger{
-          color: white;
-          background-color: #F8004D;
+  <head>
+    <meta charset="utf-8" />
+    <title>Sensor System</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <style>
+      body {
       }
-	</style>
-  
-</head>
-
-<body>
-<h1>Sensor  System</h1>
-<div class="container">
-  <div class="row" id="table">
-    
- 
-	  
-	</div>
-</div>
-	  
-
-
-
-<script>
-var div= document.getElementById('table');
-  fetch('http://localhost:3000/getSensorData')
-    .then(res => res.json())
-    .then(data => showEvents(data))
-    .catch(err => console.log(err));
-  
-setInterval(() => {
-  fetch('http://localhost:3000/getSensorData')
-    .then(res => res.json())
-    .then(data => showEvents(data ))
-    .catch(err => console.log(err));
-}, 1000*5);
-
-
-  function showEvents(events) {
-  
-    div.innerHTML = "";
-
-    var table = document.createElement('table');
-    var th1 = document.createElement('th');
-    var th2 = document.createElement('th');
-    var th3 = document.createElement('th');
-    var th4 = document.createElement('th');
-    var tr2 = document.createElement('tr');
-    th1.innerHTML = "Sensor Name";
-    th2.innerHTML = "Floor";
-    th3.innerHTML = "Room";
-    th4.innerHTML = "CO2 Lavel";
-
-    tr2.appendChild(th1);
-    tr2.appendChild(th2);
-    tr2.appendChild(th3);
-    tr2.appendChild(th4);
-
-    table.appendChild(tr2);
-
-
-events.map(event => {
-
-
-
-
-
-      var tr = document.createElement('tr');
-      var td1 = document.createElement('td');
-      var td2 = document.createElement('td');
-      var td3 = document.createElement('td');
-      var td4 = document.createElement('td');
-     
-
-
-      td1.innerHTML = event.name;
-      td2.innerHTML = event.floor;
-      td3.innerHTML = event.room;
-      td4.innerHTML = event.colevel;
-      if(event.colevel>=70){
-          tr.setAttribute('class','danger');
-      }else{
-          tr.setAttribute('class','tr');
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
       }
-      tr.appendChild(td1);
-      tr.appendChild(td2);
-      tr.appendChild(td3);
-      tr.appendChild(td4);
 
+      td,
+      th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
 
-      table.appendChild(tr);
-      
-     
-    });
-div.appendChild(table);
-  }
+      .tr:nth-child(even) {
+        background-color: #dddddd;
+      }
 
-</script>
+      h1 {
+        text-align: center;
+        padding: 20px;
+        color: #f8004d;
+      }
+      .danger {
+        color: white;
+        background-color: #f8004d;
+      }
 
+      .inactive {
+        color: white;
+        background-color: #000000da;
+      }
+    </style>
+  </head>
 
+  <body>
+    <h1>Sensor System</h1>
+    <div class="container">
+      <div class="row" id="table"></div>
+    </div>
 
-</body>
+    <script>
+      var div = document.getElementById("table");
+      fetch("http://localhost:3000/getSensorData")
+        .then((res) => res.json())
+        .then((data) => showEvents(data))
+        .catch((err) => console.log(err));
+
+      setInterval(() => {
+        fetch("http://localhost:3000/getSensorData")
+          .then((res) => res.json())
+          .then((data) => showEvents(data))
+          .catch((err) => console.log(err));
+      }, 1000 * 5);
+
+      function showEvents(events) {
+        div.innerHTML = "";
+
+        var table = document.createElement("table");
+        var th1 = document.createElement("th");
+        var th2 = document.createElement("th");
+        var th3 = document.createElement("th");
+        var th4 = document.createElement("th");
+        var th5 = document.createElement("th");
+        var th6 = document.createElement("th");
+        var tr2 = document.createElement("tr");
+        th1.innerHTML = "Sensor Name";
+        th2.innerHTML = "Floor";
+        th3.innerHTML = "Room";
+        th4.innerHTML = "CO2 Lavel";
+        th5.innerHTML = "Smoke Level";
+        th6.innerHTML = "Sensor Status";
+
+        tr2.appendChild(th1);
+        tr2.appendChild(th2);
+        tr2.appendChild(th3);
+        tr2.appendChild(th4);
+        tr2.appendChild(th5);
+        tr2.appendChild(th6);
+
+        table.appendChild(tr2);
+
+        events.map((event) => {
+          var tr = document.createElement("tr");
+          var td1 = document.createElement("td");
+          var td2 = document.createElement("td");
+          var td3 = document.createElement("td");
+          var td4 = document.createElement("td");
+          var td5 = document.createElement("td");
+          var td6 = document.createElement("td");
+
+          td1.innerHTML = event.name;
+          td2.innerHTML = event.floor;
+          td3.innerHTML = event.room;
+          td4.innerHTML = event.colevel;
+          td5.innerHTML = event.smokelevel;
+          td6.innerHTML = event.status;
+
+          if (event.colevel >= 5 || event.smokelevel >= 5) {
+            tr.setAttribute("class", "danger");
+          } else if(event.status == "Inactive"){
+            tr.setAttribute("class", "inactive");
+          }else{
+            tr.setAttribute("class", "tr");
+          }
+
+          // if () {
+            
+          // } else {
+           
+          // }
+         
+          tr.appendChild(td1);
+          tr.appendChild(td2);
+          tr.appendChild(td3);
+          tr.appendChild(td4);
+          tr.appendChild(td5);
+          tr.appendChild(td6);
+
+          table.appendChild(tr);
+        });
+        div.appendChild(table);
+      }
+    </script>
+  </body>
 </html>
