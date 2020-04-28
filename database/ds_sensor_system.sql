@@ -78,6 +78,7 @@ CREATE TABLE `sensors` (
   `name` varchar(100) DEFAULT NULL,
   `room` varchar(100) DEFAULT NULL,
   `floor` varchar(100) DEFAULT NULL,
+  `status` varchar(100) DEFAULT NULL,
   `colevel` double DEFAULT NULL,
   `smokelevel` double DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -86,15 +87,15 @@ CREATE TABLE `sensors` (
 -- Dumping data for table `sensors`
 --
 
-INSERT INTO `sensors` (`id`, `name`, `room`, `floor`, `colevel`, `smokelevel`) VALUES
-(1, 'sensor 1', 'room 1', 'floor 1', 10, 10),
-(2, 'sensor 2', 'room 2', 'floor 2', 10, 10),
-(3, 'sensor 3', 'room 3', 'floor 3', 10, 10),
-(4, ' sensor 4 ', ' room 4  ', ' floor 4 ', 0, 0),
-(5, ' sensor 5 ', ' room 4  ', ' floor 4 ', 0, 0),
-(6, ' sensor 6 ', ' room 4  ', ' floor 4 ', 0, 0),
-(7, ' sensor 7 ', ' room 5 ', ' floor 5 ', 0, 0),
-(8, ' sensor 8 ', ' room 6 ', ' floor 6 ', 0, 0);
+INSERT INTO `sensors` (`id`, `name`, `room`, `floor`, `status`, `colevel`, `smokelevel`) VALUES
+(1, 'sensor 1', 'room 1', 'floor 1', 'Active', 10, 10),
+(2, 'sensor 2', 'room 2', 'floor 1', 'Active', 10, 10),
+(3, 'sensor 3', 'room 3', 'floor 2', 'Active', 10, 10),
+(4, ' sensor 4 ', ' room 4  ', ' floor 2 ', 'InActive', 0, 0),
+(5, ' sensor 5 ', ' room 5  ', ' floor 3 ', 'InActive', 0, 0),
+(6, ' sensor 6 ', ' room 6  ', ' floor 3 ', 'InActive', 0, 0),
+(7, ' sensor 7 ', ' room 7 ', ' floor 4 ', 'InActive', 0, 0),
+(8, ' sensor 8 ', ' room 8 ', ' floor 5 ', 'InActive', 0, 0);
 
 --
 -- Indexes for dumped tables
