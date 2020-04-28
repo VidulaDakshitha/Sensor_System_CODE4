@@ -91,11 +91,11 @@ INSERT INTO `sensors` (`id`, `name`, `room`, `floor`, `status`, `colevel`, `smok
 (1, 'sensor 1', 'room 1', 'floor 1', 'Active', 10, 10),
 (2, 'sensor 2', 'room 2', 'floor 1', 'Active', 10, 10),
 (3, 'sensor 3', 'room 3', 'floor 2', 'Active', 10, 10),
-(4, ' sensor 4 ', ' room 4  ', ' floor 2 ', 'InActive', 0, 0),
-(5, ' sensor 5 ', ' room 5  ', ' floor 3 ', 'InActive', 0, 0),
-(6, ' sensor 6 ', ' room 6  ', ' floor 3 ', 'InActive', 0, 0),
-(7, ' sensor 7 ', ' room 7 ', ' floor 4 ', 'InActive', 0, 0),
-(8, ' sensor 8 ', ' room 8 ', ' floor 5 ', 'InActive', 0, 0);
+(4, ' sensor 4 ', ' room 4  ', ' floor 2 ', 'Inactive', 0, 0),
+(5, ' sensor 5 ', ' room 5  ', ' floor 3 ', 'Inactive', 0, 0),
+(6, ' sensor 6 ', ' room 6  ', ' floor 3 ', 'Inactive', 0, 0),
+(7, ' sensor 7 ', ' room 7 ', ' floor 4 ', 'Inactive', 0, 0),
+(8, ' sensor 8 ', ' room 8 ', ' floor 5 ', 'Inactive', 0, 0);
 
 --
 -- Indexes for dumped tables
