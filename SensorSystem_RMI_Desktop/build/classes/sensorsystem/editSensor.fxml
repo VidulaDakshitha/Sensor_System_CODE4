@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #13477A;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="sensorsystem.EditSensorController">
+   <HBox style="-fx-background-color: #13477A;" VBox.vgrow="ALWAYS" />
+   <VBox fx:id="addNewBox" alignment="CENTER" fillWidth="false" prefHeight="499.0" prefWidth="815.0" style="-fx-background-color: #13477A;">
+      <children>
+         <VBox fx:id="addNewVbox" alignment="CENTER" prefHeight="481.0" prefWidth="314.0">
+            <children>
+               <Label alignment="CENTER" prefHeight="17.0" prefWidth="332.0" text="EDIT SENSOR">
+                  <font>
+                     <Font name="System Bold" size="35.0" />
+                  </font>
+               </Label>
+               <Label alignment="CENTER" prefHeight="17.0" prefWidth="722.0" text="SENSOR NAME">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+                  <VBox.margin>
+                     <Insets top="10.0" />
+                  </VBox.margin>
+               </Label>
+               <TextField fx:id="sName" focusTraversable="false" prefHeight="46.0" prefWidth="314.0" style="-fx-background-color: #5A5F5E;">
+                  <VBox.margin>
+                     <Insets top="10.0" />
+                  </VBox.margin>
+               </TextField>
+               <Label alignment="CENTER" prefHeight="17.0" prefWidth="721.0" text="FLOOR NAME/NUMBER">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+                  <VBox.margin>
+                     <Insets top="30.0" />
+                  </VBox.margin>
+               </Label>
+               <TextField fx:id="sFloor" prefHeight="45.0" prefWidth="314.0" style="-fx-background-color: #5A5F5E;">
+                  <VBox.margin>
+                     <Insets top="10.0" />
+                  </VBox.margin>
+               </TextField>
+               <Label alignment="CENTER" prefHeight="17.0" prefWidth="721.0" text="ROOM NAME/NUMBER">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+                  <VBox.margin>
+                     <Insets top="30.0" />
+                  </VBox.margin>
+               </Label>
+               <TextField fx:id="sRoom" prefHeight="43.0" prefWidth="314.0" style="-fx-background-color: #5A5F5E;">
+                  <VBox.margin>
+                     <Insets top="10.0" />
+                  </VBox.margin>
+               </TextField>
+               <Button fx:id="addSensorBtn" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#editSensor" prefHeight="39.0" prefWidth="129.0" style="-fx-background-color: #0F207E;" text="EDIT" textFill="WHITE">
+                  <VBox.margin>
+                     <Insets top="30.0" />
+                  </VBox.margin>
+                  <font>
+                     <Font name="System Bold" size="35.0" />
+                  </font>
+               </Button>
+            </children>
+         </VBox>
+      </children>
+   </VBox>
+</AnchorPane>
