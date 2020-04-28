@@ -168,6 +168,52 @@ app.post('/addSensorData',async function (req,res){
 });
 
 
+app.post('/editSensor',async function (req,res){
+
+    try {
+
+        var query="UPDATE `sensors` SET `name`='"+req.body.name+"', `floor`='"+req.body.floor+"' WHERE id="+req.body.id+" LIMIT 1 ";
+       console.log(query);
+        con.query(query,await function (err, result) {
+            if (err) {
+                console.log(err);
+                res.status(500).send("error");
+            }else{
+                res.send("Sensor added");
+            }
+           // console.log("1 record inserted");
+        });
+    }catch (e) {
+        console.log("errot"+e);
+
+    }
+
+
+});
+
+
+app.get('/login',async function (req,res) {
+
+//console.log("get All data");
+
+    try {
+        await  con.query("SELECT `password` FROM `admins`", function (err, result, fields) {
+            if (err) {
+                res.status(500).send("error");
+            }else{
+
+                res.send(result);
+            }
+
+
+        });
+
+    }catch (e) {
+        console.log(e);
+        res.status(200).send("error try ",e);
+    }
+});
+
 
 
 app.listen(3000,console.log("server Start"));
