@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import jdk.nashorn.internal.parser.JSONParser;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import sun.net.www.http.HttpClient;
@@ -168,6 +169,73 @@ public class JavaRMIServer extends UnicastRemoteObject implements SensorService{
            return "error "+e;
           }
     
+    
+    }
+    
+    @Override
+    public String login(String password) throws Exception {
+        JSONArray jSONArray;
+        JSONObject jSONObject;
+          try {
+              URL url = new URL("http://localhost:3000/login");
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("GET");
+		conn.setRequestProperty("Accept", "application/json");
+                BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                String output = br.readLine();
+                jSONArray = new JSONArray(output);
+                jSONObject = jSONArray.getJSONObject(0);
+                int gotPass = Integer.parseInt(jSONObject.get("password").toString().trim());
+                String passToString = String.valueOf(gotPass);
+                
+                if(passToString.equals(password)){
+                    return "Logged in";
+                }
+                else{
+                    return "Wrong pass";
+                }
+               
+	  } catch (Exception e) {
+            System.err.println("err "+e);
+             return "err "+e;
+          }
+         
+    }
+
+    @Override
+    public String editSensor(int id, String name, String room, String floor) throws Exception {
+        try {
+            JSONObject jSONObject = new JSONObject();
+            
+            jSONObject.put("name",name);
+            jSONObject.put("room",room);
+            jSONObject.put("floor",floor);
+            jSONObject.put("id",id );
+            
+            System.out.println(id + name + room + floor);
+            byte[] postData =jSONObject.toString().getBytes(StandardCharsets.UTF_8);
+            int length=postData.length;
+             URL url = new URL("http://localhost:3000/editSensor");
+            HttpURLConnection conn;
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("userid", "123464");
+            conn.setRequestProperty("Content-Type", "application/json");
+            conn.setDoOutput(true);
+            DataOutputStream dataOutputStream = new DataOutputStream(conn.getOutputStream());
+            dataOutputStream.write(postData);  
+            dataOutputStream.flush();
+            dataOutputStream.close();
+            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                
+                String output = br.readLine();
+            System.out.println(output);
+            return "Edited Successfull";
+            
+        } catch (Exception e) {
+            System.err.println("err "+e);
+           return "error "+e;
+          }
     
     }
 

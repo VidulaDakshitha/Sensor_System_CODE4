@@ -20,5 +20,7 @@ import java.util.List;
 public interface SensorService extends Remote{
     public String addSensor(String name, String floor, String room, double level) throws  RemoteException;
     public String getSernsors() throws Exception;
-    public String updateSernsorLevel(int id,double lavel) throws Exception;
+    public String login(String password) throws Exception;
+    public String editSensor(int id, String name, String room, String floor) throws Exception;
+    public String updateSernsorLevel(int id, double lavel) throws Exception;
 }
