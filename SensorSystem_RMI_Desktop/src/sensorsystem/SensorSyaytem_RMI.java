@@ -31,7 +31,14 @@ public class SensorSyaytem_RMI extends Application {
     
     @Override
    
-        //
+          public void start(Stage stage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("MainWindow.fxml"));
+        
+        Scene scene = new Scene(root);
+        
+        stage.setScene(scene);
+        stage.show();
+    }
    
          
          
