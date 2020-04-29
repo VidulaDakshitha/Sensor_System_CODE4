@@ -61,6 +61,9 @@ public class EditSensorController implements Initializable {
     
     
     public void transferData(int id, String ob1, String ob2, String ob3, String ob4) {
+        /*
+        this method use to get sensor datails from sensor details contoller 
+        */
         this.editId = id;
         sName.setText(ob1);
         sFloor.setText(ob2);
@@ -80,9 +83,12 @@ public class EditSensorController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+         /*
+        this method use to connect rmi server 
+        */
         System.setProperty("java.security.policy", "file:allowall.policy");
        try {
-             Registry reg =LocateRegistry.getRegistry("127.0.0.1",2000);
+            Registry reg =LocateRegistry.getRegistry("127.0.0.1",2000);
             sensorService = (SensorService) reg.lookup("sensorServer");
             
             
@@ -100,6 +106,8 @@ public class EditSensorController implements Initializable {
 
     @FXML
     private void editSensor(MouseEvent event) {
+        // get new values to update sensor detials
+        
         String name,floor,room, status;
         int id;
         id = editId;
@@ -114,7 +122,7 @@ public class EditSensorController implements Initializable {
         else
             status = "Inactive";
         
-        System.out.println(status);
+        //System.out.println(status);
         
         if (name.equals("") || floor.equals("") || room.equals("")) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -130,45 +138,34 @@ public class EditSensorController implements Initializable {
         }else{
               
              try {
-                String newMess= sensorService.editSensor(id, name, floor, room, status);
-                  if (newMess.startsWith("Edited")) {
+                 // send new values to rmi server 
+                String newMess= sensorService.editSensor(id, name, floor, room, status); 
+                if (newMess.startsWith("Edited")) {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Successfull");
-               alert.setHeaderText("Sensor: "+name+" Edited successfully");
-                alert.showAndWait().ifPresent(rs -> {
+                    alert.setTitle("Successfull");
+                    alert.setHeaderText("Sensor: "+name+" Edited successfully");
+                    alert.showAndWait().ifPresent(rs -> {
                     if (rs == ButtonType.OK) {
                        // System.out.println("Pressed OK.");
-                    }
-                 }); 
-                 }else{
+                        }
+                    }); 
+                }else{
                     Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText(newMess);
+                    alert.setTitle("Error");
+                    alert.setHeaderText(newMess);
                
-                alert.showAndWait().ifPresent(rs -> {
-                    if (rs == ButtonType.OK) {
-                       // System.out.println("Pressed OK.");
-                    }
-                 });    
-                  }
+                    alert.showAndWait().ifPresent(rs -> {
+                        if (rs == ButtonType.OK) {
+                           // System.out.println("Pressed OK.");
+                        }
+                    });    
+                }
                   
           
-//           URL url1=null;
-//           ResourceBundle rb = null;
-//           objCon.initialize(url1, rb);
-//           objCon.updatetable();
-//           FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainWindow.fxml"));
-//           Parent root = (Parent) fxmlLoader.load();
-//           Stage stage = new Stage();
-//           stage.setScene(new Scene(root));  
-//           stage.show();
 
-Stage stage=(Stage)addSensorBtn.getScene().getWindow();
-stage.close();
-//             
-//SensorsDetailsController objCon = new SensorsDetailsController();
-//          objCon.setEditable(true);
-          
+            Stage stage=(Stage)addSensorBtn.getScene().getWindow();
+            stage.close();
+        
          
             } catch (Exception e) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -183,7 +180,7 @@ stage.close();
                 
             }
            
-              //System.setProperty("java.security.policy", "file:allowall.policy");
+             
              
         }
     }

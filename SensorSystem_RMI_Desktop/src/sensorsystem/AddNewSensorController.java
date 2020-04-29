@@ -45,26 +45,37 @@ public class AddNewSensorController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+         /*
+        this method use to connect rmi server 
+        */
         System.setProperty("java.security.policy", "file:allowall.policy");
        try {
              Registry reg =LocateRegistry.getRegistry("127.0.0.1",2000);
              sensorService = (SensorService) reg.lookup("sensorServer");
-           
- 
         } catch (Exception e) {
-            
-            System.err.println("error "+e);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText(e.toString());
+               
+                alert.showAndWait().ifPresent(rs -> {
+                    if (rs == ButtonType.OK) {
+                       // System.out.println("Pressed OK.");
+                    }
+                 }); 
         } 
     }    
 
     @FXML
     private void addNewSensor(MouseEvent event) {
-        
+        /*
+        this method use tp add a new senseor
+        */
         String name,floor,room;
-        name=sName.getText().toString();
-        floor=sFloor.getText().toString();
-        room=sRoom.getText().toString();
+        name=sName.getText().toString(); // get sensor name
+        floor=sFloor.getText().toString(); // get sensor floor details
+        room=sRoom.getText().toString(); // get sensor room details
         if (name.equals("") || floor.equals("") || room.equals("")) {
+            // check whether the fields are empty or not  
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Warining");
                 alert.setHeaderText("All fields are mandatory!!!");
@@ -74,12 +85,13 @@ public class AddNewSensorController implements Initializable {
                     }
                  }); 
         }else{
+            // if required fileds are not empty then send all data to rmi server
               sName.setText("");
               sFloor.setText("");
               sRoom.setText("");
              try {
                   
-                String newMess= sensorService.addSensor(name , floor,room,0);
+                String newMess= sensorService.addSensor(name , floor,room,0); // send data to rmi server and get response
                 if (newMess.startsWith("Successfull")) {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Successfull");

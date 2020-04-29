@@ -80,29 +80,38 @@ public class MainWindowController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        
-         System.setProperty("java.security.policy", "file:allowall.policy");
-       try {
-             Registry reg =LocateRegistry.getRegistry("127.0.0.1",2000);
+        /*
+        this method use to connect rmi server 
+        */
+        System.setProperty("java.security.policy", "file:allowall.policy");
+        try {
+            Registry reg =LocateRegistry.getRegistry("127.0.0.1",2000);
             sensorService = (SensorService) reg.lookup("sensorServer");
            
  
         } catch (Exception e) {
             
-            System.err.println("error "+e);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText(e.toString());
+               
+                alert.showAndWait().ifPresent(rs -> {
+                    if (rs == ButtonType.OK) {
+                       // System.out.println("Pressed OK.");
+                    }
+                 }); 
         } 
     }    
 
     @FXML
     private void showAddNew(MouseEvent event) throws IOException {
-       
+       /*
+        This methode use to show add new sensor window.
+        when click on add new button this method will be triggered
+        */
         Parent root =FXMLLoader.load(getClass().getResource("AddNewSensor.fxml"));
-        
         Scene scene =  addbtn.getScene();
-        
-                
         root.translateXProperty().set(scene.getWidth());
-       
-        
         addNewBox.getChildren().add(root);
         
         Timeline timeline = new Timeline();
@@ -121,12 +130,13 @@ public class MainWindowController implements Initializable {
 
     @FXML
     private void showSensors(MouseEvent event) throws IOException {
+        /*
+        This methode use to show all sensor details table.
+        when click on sensor details button this method will be triggered
+        */
         Parent root =FXMLLoader.load(getClass().getResource("SensorsDetails.fxml"));
-        
         Scene scene =  addbtn.getScene();
-                
         root.translateYProperty().set(scene.getHeight());
-         
         addNewBox.getChildren().add(root);
         
         Timeline timeline = new Timeline();
@@ -150,6 +160,7 @@ public class MainWindowController implements Initializable {
         name=sName.getText().toString();
         floor=sFloor.getText().toString();
         room=sRoom.getText().toString();
+        
         if (name.equals("") || floor.equals("") || room.equals("")) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Warining");

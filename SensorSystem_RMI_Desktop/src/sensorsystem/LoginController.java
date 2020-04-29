@@ -53,12 +53,23 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+         /*
+        this method use to connect rmi server 
+        */
         System.setProperty("java.security.policy", "file:allowall.policy");
        try {
             Registry reg =LocateRegistry.getRegistry("127.0.0.1",2000);
             sensorService = (SensorService) reg.lookup("sensorServer");
         } catch (Exception e) {
-           System.err.println("error "+e);
+           Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText(e.toString());
+               
+                alert.showAndWait().ifPresent(rs -> {
+                    if (rs == ButtonType.OK) {
+                       // System.out.println("Pressed OK.");
+                    }
+                 }); 
         } 
     }
     
@@ -68,12 +79,13 @@ public class LoginController implements Initializable {
         
         String pass;
         
-        pass=password.getText().toString();
+        pass=password.getText().toString();// get password box value (password) 
         
         try{
-            String logMsg = sensorService.login(pass);
-            System.out.println(logMsg);
-            if(logMsg.startsWith("Logged")){          
+            String logMsg = sensorService.login(pass);// send password to rmi server
+            //System.out.println(logMsg);
+            if(logMsg.startsWith("Logged")){ 
+                // if password is correct show main window
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainWindow.fxml"));
                 Parent root = (Parent) fxmlLoader.load();
                 Stage stage = new Stage();
@@ -84,7 +96,8 @@ public class LoginController implements Initializable {
                 Stage stageClose=(Stage)loginBTN.getScene().getWindow();
                 stageClose.close();
             }else if(logMsg.startsWith("Wrong")){
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                // if password is wrong show error alert
+                Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Unauthorized");
                 alert.setHeaderText("Wrong password");
                 alert.showAndWait().ifPresent(rs -> {
@@ -93,7 +106,8 @@ public class LoginController implements Initializable {
                 }
                 }); 
             }else{
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                 // if rmi server return exception Show error message
+                Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
                 alert.setHeaderText("Oopzz!! Something went wrong!!");
                 alert.showAndWait().ifPresent(rs -> {
