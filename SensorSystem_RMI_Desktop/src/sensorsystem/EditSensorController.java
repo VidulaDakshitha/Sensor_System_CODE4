@@ -137,7 +137,7 @@ public class EditSensorController implements Initializable {
                alert.setHeaderText("Sensor: "+name+" Edited successfully");
                 alert.showAndWait().ifPresent(rs -> {
                     if (rs == ButtonType.OK) {
-                        System.out.println("Pressed OK.");
+                       // System.out.println("Pressed OK.");
                     }
                  }); 
                  }else{
@@ -147,7 +147,7 @@ public class EditSensorController implements Initializable {
                
                 alert.showAndWait().ifPresent(rs -> {
                     if (rs == ButtonType.OK) {
-                        System.out.println("Pressed OK.");
+                       // System.out.println("Pressed OK.");
                     }
                  });    
                   }

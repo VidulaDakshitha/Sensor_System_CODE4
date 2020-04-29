@@ -70,7 +70,7 @@ public class AddNewSensorController implements Initializable {
                alert.setHeaderText("All fields are mandatory!!!");
                 alert.showAndWait().ifPresent(rs -> {
                     if (rs == ButtonType.OK) {
-                        System.out.println("Pressed OK.");
+                       // System.out.println("Pressed OK.");
                     }
                  }); 
         }else{
@@ -86,7 +86,7 @@ public class AddNewSensorController implements Initializable {
                alert.setHeaderText(name+" added successfully");
                 alert.showAndWait().ifPresent(rs -> {
                     if (rs == ButtonType.OK) {
-                        System.out.println("Pressed OK.");
+                       // System.out.println("Pressed OK.");
                     }
                  }); 
                  }else{
@@ -96,7 +96,7 @@ public class AddNewSensorController implements Initializable {
                
                 alert.showAndWait().ifPresent(rs -> {
                     if (rs == ButtonType.OK) {
-                        System.out.println("Pressed OK.");
+                       // System.out.println("Pressed OK.");
                     }
                  });    
                   }
@@ -109,7 +109,7 @@ public class AddNewSensorController implements Initializable {
                
                 alert.showAndWait().ifPresent(rs -> {
                     if (rs == ButtonType.OK) {
-                        System.out.println("Pressed OK.");
+                       // System.out.println("Pressed OK.");
                     }
                  }); 
                 

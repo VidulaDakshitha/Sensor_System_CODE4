@@ -92,7 +92,7 @@ public class LoginController implements Initializable {
             alert.setHeaderText("Wrong password");
             alert.showAndWait().ifPresent(rs -> {
             if (rs == ButtonType.OK) {
-                System.out.println("Pressed OK.");
+               // System.out.println("Pressed OK.");
             }
             }); 
         }
@@ -103,7 +103,7 @@ public class LoginController implements Initializable {
             alert.setHeaderText("Oopzz!! Something went wrong!!");
             alert.showAndWait().ifPresent(rs -> {
             if (rs == ButtonType.OK) {
-                System.out.println("Pressed OK.");
+              //  System.out.println("Pressed OK.");
             }
             }); 
         }

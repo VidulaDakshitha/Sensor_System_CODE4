@@ -101,12 +101,6 @@ public class SensorsDetailsController implements Initializable{
             
             sensorTable.setItems(observableList);
            
-//         EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>(){ 
-//         @Override 
-//         public void handle(MouseEvent e) { 
-//            System.out.println("Hello World"); 
-//         } 
-//        };   
 
             
         sensorTable.setOnMouseClicked(new EventHandler<MouseEvent>(){
@@ -123,7 +117,7 @@ public class SensorsDetailsController implements Initializable{
                     String tempFloor = pos.getFloor();
                     String tempRoom = pos.getRoom();
                     String status = pos.getStatus();
-                        System.out.println("This statt: " + status);
+                    //System.out.println("This statt: " + status);
                     
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("editSensor.fxml"));
                     Parent root = (Parent) fxmlLoader.load();
@@ -155,11 +149,11 @@ public class SensorsDetailsController implements Initializable{
                 sensorId.add(Integer.parseInt(jSONObject.get("id").toString().trim()));
                 Sensor sensor =new Sensor(Integer.parseInt(jSONObject.get("id").toString().trim()),jSONObject.get("name").toString().trim(), jSONObject.get("floor").toString().trim(), jSONObject.get("room").toString().trim(),Double.parseDouble(jSONObject.get("colevel").toString()), jSONObject.get("status").toString().trim(),Double.parseDouble(jSONObject.get("smokelevel").toString()) );
                 sensorTable.getItems().add(sensor);
-                System.out.println("smoke level "+sensor.getSmokeLevel());
+               /* System.out.println("smoke level "+sensor.getSmokeLevel());
                 System.out.println("status "+sensor.getStatus());
                 System.out.println("fact status"+status.getCellData(i));
                 System.out.println("fact "+smokelevel.getCellData(i));
-                
+                */
                 
                   if (sensor.getLevel()>=70) {
                   System.out.println("co2 wadi "+sensor.getName());
@@ -180,14 +174,7 @@ public class SensorsDetailsController implements Initializable{
             }, 0, 15000);
            
             
-//            Timer timer2 = new Timer();
-//            timer2.scheduleAtFixedRate(new TimerTask() {
-//                @Override
-//                public void run() {
-//                     updateLavel();
-//                }
-//            }, 0, 10000);
-            
+          
             
  
         } catch (Exception e) {
@@ -211,8 +198,8 @@ public class SensorsDetailsController implements Initializable{
                 //System.out.println(jSONObject);
                 Sensor sensor =new Sensor(Integer.parseInt(jSONObject.get("id").toString().trim()),jSONObject.get("name").toString().trim(), jSONObject.get("floor").toString().trim(), jSONObject.get("room").toString().trim(),Double.parseDouble(jSONObject.get("colevel").toString()), jSONObject.get("status").toString().trim(),Double.parseDouble(jSONObject.get("smokelevel").toString()) );
                 sensorTable.getItems().add(sensor);
-                System.out.println("smoke level "+sensor.getSmokeLevel());
-                System.out.println("status "+sensor.getStatus());
+              //  System.out.println("smoke level "+sensor.getSmokeLevel());
+              //  System.out.println("status "+sensor.getStatus());
                 if (sensor.getLevel()>=70) {
                   /*  System.out.println("co2 wadi "+sensor.getName());
                     Notifications.create()
@@ -226,23 +213,7 @@ public class SensorsDetailsController implements Initializable{
         }
     }
 
-//  private void updateLavel(){
-//      DecimalFormat f = new DecimalFormat("##.00");
-//      try {
-//         for (Integer id : sensorId) {
-//             Random r= new Random();
-//             int rangeMin=0,rangeMax=100;
-//             
-//          double level = Double.parseDouble( f.format(rangeMin + (rangeMax - rangeMin) * r.nextDouble()));
-//          String data = sensorService.updateSernsorLevel(id,level );
-//      } 
-//      } catch (Exception e) {
-//           System.err.println("error "+e);
-//      }
-//      
-//      
-//  }
-    
+ 
     
     
 }

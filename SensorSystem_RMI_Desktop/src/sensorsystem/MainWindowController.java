@@ -184,7 +184,7 @@ public class MainWindowController implements Initializable {
                alert.setHeaderText("All fields are mandatory!!!");
                 alert.showAndWait().ifPresent(rs -> {
                     if (rs == ButtonType.OK) {
-                        System.out.println("Pressed OK.");
+                        //System.out.println("Pressed OK.");
                     }
                  }); 
         }else{
@@ -200,7 +200,7 @@ public class MainWindowController implements Initializable {
                alert.setHeaderText(name+" added successfully");
                 alert.showAndWait().ifPresent(rs -> {
                     if (rs == ButtonType.OK) {
-                        System.out.println("Pressed OK.");
+                       // System.out.println("Pressed OK.");
                     }
                  }); 
                  }else{
@@ -223,7 +223,7 @@ public class MainWindowController implements Initializable {
                
                 alert.showAndWait().ifPresent(rs -> {
                     if (rs == ButtonType.OK) {
-                        System.out.println("Pressed OK.");
+                       // System.out.println("Pressed OK.");
                     }
                  }); 
                 
