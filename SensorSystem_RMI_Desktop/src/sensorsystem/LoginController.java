@@ -28,6 +28,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -80,6 +81,8 @@ public class LoginController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainWindow.fxml"));
             Parent root = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
+            stage.setTitle("Sensor System");
+            stage.getIcons().add(new Image(this.getClass().getResourceAsStream("logoNew-removebg-preview.png")));
             stage.setScene(new Scene(root));  
             stage.show();
             Stage stageClose=(Stage)loginBTN.getScene().getWindow();

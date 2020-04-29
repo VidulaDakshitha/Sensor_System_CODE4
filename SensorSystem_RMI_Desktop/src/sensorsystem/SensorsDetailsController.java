@@ -126,6 +126,8 @@ public class SensorsDetailsController implements Initializable{
                     controller.transferData(editID, tempName, tempFloor, tempRoom, status);
         
                     Stage stage = new Stage();
+                    stage.setTitle("Sensor System");
+                    stage.getIcons().add(new Image(this.getClass().getResourceAsStream("logoNew-removebg-preview.png")));
                     stage.setScene(new Scene(root));  
                     stage.show();
                     
