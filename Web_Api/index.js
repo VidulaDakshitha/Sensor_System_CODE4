@@ -20,6 +20,9 @@ var mysql = require("mysql");
     )*/
 
 try {
+  /*
+create databse connection
+  */
   var con = mysql.createConnection({
     host: "localhost",
     user: "root",
@@ -36,6 +39,10 @@ try {
 }
 
 try {
+/*
+configure mail functions
+*/
+
   /* var transport =nodemailer.creatTransport({
       service:'gmail',
       auth:{
@@ -48,54 +55,24 @@ try {
   console.log("error" + e);
 }
 
+
+/*set web web client  
+
+url http://localhost:3000
+*/
+
 app.get("/", function (req, res) {
+
   res.send("index.html");
 });
-var length = 0;
-setInterval(() => {
-  var query1 = "SELECT * FROM `sensors` ";
 
-  try {
-    con.query(query1, async function (err, result) {
-      if (err) {
-        //  console.log("update fail"+err)
-      } else {
-        //   console.log(result.length)
-        length = result.length;
-      }
-    });
-  } catch (e) {
-    console.log("error" + e);
-  }
-}, 10000);
+
+
+
 /*
-setInterval(()=>{
-
-
-
-    try {
-
-
-        for (var i=1;i<=length;i++){
-            var lavel=Math.floor(Math.random() * 101);
-            var query="UPDATE `sensors` SET `colevel`="+lavel+" WHERE id="+i+" LIMIT 1 ";
-            con.query(query, function (err, result) {
-                if (err) {
-                  //  console.log("update fail"+err)
-                } else {
-                  //  console.log("updated")
-                }
-            })
-        }
-
-
-
-    }catch (e) {
-        console.log("error"+e);
-    }
-
-},15000);
+create api for update sensor details
 */
+
 app.post("/updateSensorLavel", async function (req, res) {
   try {
     var query =
@@ -122,6 +99,10 @@ app.post("/updateSensorLavel", async function (req, res) {
   }
 });
 
+/*
+create a api for get all sensor details
+*/
+
 app.get("/getSensorData", async function (req, res) {
   //console.log("get All data");
 
@@ -138,6 +119,10 @@ app.get("/getSensorData", async function (req, res) {
     res.status(200).send("error try ", e);
   }
 });
+
+/*
+create api for add new sensor
+*/
 
 app.post("/addSensorData", async function (req, res) {
   try {
@@ -166,6 +151,11 @@ app.post("/addSensorData", async function (req, res) {
   }
 });
 
+/*
+create api for login function
+*/
+
+
 app.get("/login", async function (req, res) {
   //console.log("get All data");
 
@@ -186,6 +176,11 @@ app.get("/login", async function (req, res) {
     res.status(200).send("error try ", e);
   }
 });
+
+/*
+create api for update senesor details
+*/
+
 
 app.post("/editSensor", async function (req, res) {
   try {
@@ -232,6 +227,11 @@ app.post("/editSensor", async function (req, res) {
     console.log("errot" + e);
   }
 });
+
+/*
+crate api for send mails
+*/
+
 
 app.post("/sendmail", async function (req, res) {
   try {

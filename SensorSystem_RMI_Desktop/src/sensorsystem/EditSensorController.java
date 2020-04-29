@@ -22,6 +22,8 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -55,7 +57,10 @@ public class EditSensorController implements Initializable {
      * Initializes the controller class.
      */
     
+    @FXML
     ToggleGroup mainGroup;
+    @FXML
+    private ToggleGroup group1;
     
     
     
@@ -106,7 +111,22 @@ public class EditSensorController implements Initializable {
 
     @FXML
     private void editSensor(MouseEvent event) {
-        // get new values to update sensor detials
+          // check mouse is clicked
+        editSernsor();
+    }
+     @FXML
+    private void editSensorKeyPressed(KeyEvent event) {
+    // check enter key is presssed
+     if (event.getCode() == KeyCode.ENTER){
+              editSernsor();
+        }
+       
+    }
+    
+    
+    
+    private void editSernsor(){
+          // get new values and  update sensor details
         
         String name,floor,room, status;
         int id;
@@ -182,9 +202,9 @@ public class EditSensorController implements Initializable {
            
              
              
-        }
+        } 
     }
-    
-    
+
+   
     
 }

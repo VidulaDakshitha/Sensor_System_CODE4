@@ -46,7 +46,7 @@
                      <children>
                         <VBox fx:id="addNewBox" alignment="CENTER" fillWidth="false" prefHeight="475.0" prefWidth="715.0" style="-fx-background-color: #13477A;" HBox.hgrow="ALWAYS">
                            <children>
-                              <VBox fx:id="addNewVbox" alignment="CENTER" prefHeight="470.0" prefWidth="378.0">
+                              <VBox fx:id="addNewVbox" alignment="CENTER" onKeyPressed="#addNewKeyPress" prefHeight="470.0" prefWidth="378.0">
                                  <children>
                                     <Label alignment="CENTER" prefHeight="17.0" prefWidth="332.0" text="ADD NEW SENSOR" textFill="WHITE">
                                        <font>

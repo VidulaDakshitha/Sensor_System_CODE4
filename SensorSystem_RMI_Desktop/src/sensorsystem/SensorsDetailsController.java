@@ -185,7 +185,7 @@ public class SensorsDetailsController implements Initializable{
     } 
     
     private void showNotification(String mess){
-        Toolkit.getDefaultToolkit().beep();
+        Toolkit.getDefaultToolkit().beep();// Notification sound
          Notifications.create()
                             .title("CO2 Lovel is High ")
                             .text(mess)

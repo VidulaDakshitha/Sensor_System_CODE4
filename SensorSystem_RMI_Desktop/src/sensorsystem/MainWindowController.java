@@ -39,6 +39,8 @@ import java.rmi.registry.Registry;
 import java.util.Locale;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 
@@ -46,7 +48,7 @@ public class MainWindowController implements Initializable {
     
     
    private SensorService sensorService = null;
-         
+   private Boolean clcikShowAdd=false;
    
 
     @FXML
@@ -58,8 +60,6 @@ public class MainWindowController implements Initializable {
     @FXML
     private VBox addNewVbox;
    
-    @FXML
-    private Label message;
     @FXML
     private Button addSensorBtn;
     @FXML
@@ -109,23 +109,27 @@ public class MainWindowController implements Initializable {
         This methode use to show add new sensor window.
         when click on add new button this method will be triggered
         */
-        Parent root =FXMLLoader.load(getClass().getResource("AddNewSensor.fxml"));
-        Scene scene =  addbtn.getScene();
-        root.translateXProperty().set(scene.getWidth());
-        addNewBox.getChildren().add(root);
+        if (clcikShowAdd) {
+           Parent root =FXMLLoader.load(getClass().getResource("AddNewSensor.fxml"));
+            Scene scene =  addbtn.getScene();
+            root.translateXProperty().set(scene.getWidth());
+            addNewBox.getChildren().add(root);
+
+            Timeline timeline = new Timeline();
+            KeyValue keyValue = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN);
+            KeyFrame keyFrame = new KeyFrame(Duration.seconds(1), keyValue);
+            timeline.getKeyFrames().add(keyFrame);
+
+            timeline.play();
+            addNewBox.getChildren().remove(0);
+
+            sensorbtn.getStyleClass().remove("active");
+            sensorbtn.getStyleClass().add("box");
+            addbtn.getStyleClass().remove("box");
+            addbtn.getStyleClass().add("active"); 
+            clcikShowAdd=false;
+        }
         
-        Timeline timeline = new Timeline();
-        KeyValue keyValue = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN);
-        KeyFrame keyFrame = new KeyFrame(Duration.seconds(1), keyValue);
-        timeline.getKeyFrames().add(keyFrame);
-        
-        timeline.play();
-        addNewBox.getChildren().remove(0);
-       
-        sensorbtn.getStyleClass().remove("active");
-        sensorbtn.getStyleClass().add("box");
-        addbtn.getStyleClass().remove("box");
-        addbtn.getStyleClass().add("active");
     }
 
     @FXML
@@ -134,28 +138,48 @@ public class MainWindowController implements Initializable {
         This methode use to show all sensor details table.
         when click on sensor details button this method will be triggered
         */
-        Parent root =FXMLLoader.load(getClass().getResource("SensorsDetails.fxml"));
-        Scene scene =  addbtn.getScene();
-        root.translateYProperty().set(scene.getHeight());
-        addNewBox.getChildren().add(root);
+        if (!clcikShowAdd) {
+            Parent root =FXMLLoader.load(getClass().getResource("SensorsDetails.fxml"));
+            Scene scene =  addbtn.getScene();
+            root.translateYProperty().set(scene.getHeight());
+            addNewBox.getChildren().add(root);
+
+            Timeline timeline = new Timeline();
+            KeyValue keyValue = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
+            KeyFrame keyFrame = new KeyFrame(Duration.seconds(1), keyValue);
+            timeline.getKeyFrames().add(keyFrame);
+
+            timeline.play();
+            addNewBox.getChildren().remove(0);
+            // addbtn.setTextFill(Color.GRAY);
+            addbtn.getStyleClass().remove("active");
+            addbtn.getStyleClass().add("box");
+            sensorbtn.getStyleClass().remove("box");
+            sensorbtn.getStyleClass().add("active");
+            clcikShowAdd=true;
+        }
         
-        Timeline timeline = new Timeline();
-        KeyValue keyValue = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
-        KeyFrame keyFrame = new KeyFrame(Duration.seconds(1), keyValue);
-        timeline.getKeyFrames().add(keyFrame);
-        
-        timeline.play();
-        addNewBox.getChildren().remove(0);
-        // addbtn.setTextFill(Color.GRAY);
-        addbtn.getStyleClass().remove("active");
-        addbtn.getStyleClass().add("box");
-        sensorbtn.getStyleClass().remove("box");
-        sensorbtn.getStyleClass().add("active");
     }
   
 
     @FXML
     private void addNewSensor(MouseEvent event) {
+      // check mouse is clicked
+        addNew();
+        
+    }
+    
+    @FXML
+    private void addNewKeyPress(KeyEvent event) {
+        // check enter key is pressed
+        if (event.getCode() == KeyCode.ENTER){
+            addNew();
+        }
+    }
+        private void addNew(){
+            /*
+            this methode use to add new sensor to system
+            */
         String name,floor,room;
         name=sName.getText().toString();
         floor=sFloor.getText().toString();
@@ -216,8 +240,8 @@ public class MainWindowController implements Initializable {
               
              
         }
-        
-        
-    }
-        
+          
+      }
+
+    
 }

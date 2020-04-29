@@ -16,6 +16,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 
@@ -26,8 +28,6 @@ public class AddNewSensorController implements Initializable {
     private VBox addNewBox;
     @FXML
     private VBox addNewVbox;
-    @FXML
-    private Label message;
     @FXML
     private TextField sName;
     @FXML
@@ -67,6 +67,20 @@ public class AddNewSensorController implements Initializable {
 
     @FXML
     private void addNewSensor(MouseEvent event) {
+       // check mouse is clicked
+        addNew();
+    }
+    
+    @FXML
+    private void addNewKeyPress(KeyEvent event) {
+        // check enter key is presssed
+        if (event.getCode() == KeyCode.ENTER){
+             addNew();
+             System.out.println("addNewKeyPress(KeyEvent event)");
+        }
+    }
+    
+    private void addNew(){
         /*
         this method use tp add a new senseor
         */
@@ -126,7 +140,7 @@ public class AddNewSensorController implements Initializable {
                  }); 
                 
             }
-        }
+        } 
     }
     
 }

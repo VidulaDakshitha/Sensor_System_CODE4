@@ -29,6 +29,8 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -74,50 +76,81 @@ public class LoginController implements Initializable {
     }
     
 
-    @FXML
-    private void loginMethod(MouseEvent event){
-        
-        String pass;
+    private void login(){
+          String pass;
         
         pass=password.getText().toString();// get password box value (password) 
-        
-        try{
-            String logMsg = sensorService.login(pass);// send password to rmi server
-            //System.out.println(logMsg);
-            if(logMsg.startsWith("Logged")){ 
-                // if password is correct show main window
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainWindow.fxml"));
-                Parent root = (Parent) fxmlLoader.load();
-                Stage stage = new Stage();
-                stage.setTitle("Sensor System");
-                stage.getIcons().add(new Image(this.getClass().getResourceAsStream("logoNew-removebg-preview.png")));
-                stage.setScene(new Scene(root));  
-                stage.show();
-                Stage stageClose=(Stage)loginBTN.getScene().getWindow();
-                stageClose.close();
-            }else if(logMsg.startsWith("Wrong")){
-                // if password is wrong show error alert
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Unauthorized");
-                alert.setHeaderText("Wrong password");
+        if (pass.equals("")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Enter password");
                 alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
                    // System.out.println("Pressed OK.");
                 }
                 }); 
-            }else{
-                 // if rmi server return exception Show error message
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("Oopzz!! Something went wrong!!");
-                alert.showAndWait().ifPresent(rs -> {
-                if (rs == ButtonType.OK) {
-                  //  System.out.println("Pressed OK.");
-                }
-                }); 
-            }
-        }catch(Exception e){
-            e.printStackTrace();
+        }else{
+                try{
+                 String logMsg = sensorService.login(pass);// send password to rmi server
+                 //System.out.println(logMsg);
+                 if(logMsg.startsWith("Logged")){ 
+                     // if password is correct show main window
+                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainWindow.fxml"));
+                     Parent root = (Parent) fxmlLoader.load();
+                     Stage stage = new Stage();
+                     stage.setTitle("Sensor System");
+                     stage.getIcons().add(new Image(this.getClass().getResourceAsStream("logoNew-removebg-preview.png")));
+                     stage.setScene(new Scene(root));  
+                     stage.show();
+                     Stage stageClose=(Stage)loginBTN.getScene().getWindow();
+                     stageClose.close();
+                 }else if(logMsg.startsWith("Wrong")){
+                     // if password is wrong show error alert
+                     Alert alert = new Alert(Alert.AlertType.ERROR);
+                     alert.setTitle("Unauthorized");
+                     alert.setHeaderText("Wrong password");
+                     alert.showAndWait().ifPresent(rs -> {
+                     if (rs == ButtonType.OK) {
+                        // System.out.println("Pressed OK.");
+                     }
+                     }); 
+                 }else{
+                      // if rmi server return exception Show error message
+                     Alert alert = new Alert(Alert.AlertType.ERROR);
+                     alert.setTitle("Error");
+                     alert.setHeaderText("Oopzz!! Something went wrong!!");
+                     alert.showAndWait().ifPresent(rs -> {
+                     if (rs == ButtonType.OK) {
+                       //  System.out.println("Pressed OK.");
+                     }
+                     }); 
+                 }
+             }catch(Exception e){
+                     Alert alert = new Alert(Alert.AlertType.ERROR);
+                     alert.setTitle("Error");
+                     alert.setHeaderText(e.toString());
+                     alert.showAndWait().ifPresent(rs -> {
+                     if (rs == ButtonType.OK) {
+                       //  System.out.println("Pressed OK.");
+                     }
+                     }); 
+             } 
+        }
+        
+    }
+    
+    
+    @FXML
+    private void loginMethod(MouseEvent event){
+          login();
+      
+    }
+
+    @FXML
+    private void keyPressedLogin(KeyEvent event) {
+       
+         if (event.getCode() == KeyCode.ENTER){
+             login();
         }
     }
         

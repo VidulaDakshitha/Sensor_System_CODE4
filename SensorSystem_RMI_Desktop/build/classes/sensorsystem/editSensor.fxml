@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="415.0" prefWidth="600.0" style="-fx-background-color: #13477A;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sensorsystem.EditSensorController">
-   <VBox fx:id="addNewBox" alignment="CENTER" fillWidth="false" prefHeight="499.0" prefWidth="815.0" style="-fx-background-color: #13477A;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+   <VBox fx:id="addNewBox" alignment="CENTER" fillWidth="false" onKeyPressed="#editSensorKeyPressed" prefHeight="499.0" prefWidth="815.0" style="-fx-background-color: #13477A;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
          <VBox fx:id="addNewVbox" alignment="CENTER" prefHeight="481.0" prefWidth="314.0">
             <children>
