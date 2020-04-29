@@ -216,7 +216,7 @@ app.post("/editSensor", async function (req, res) {
         req.body.id +
         " LIMIT 1 ";
     }
-    console.log(query);
+   // console.log(query);
     con.query(
       query,
       await function (err, result) {
@@ -249,7 +249,7 @@ app.post("/sendmail", async function (req, res) {
           for (var i = 0; i < result.length; i++) {
             console.log(result[i]["email"].toString());
 
-            console.log("visited the function");
+           // console.log("visited the function");
             let testAccount = await nodemailer.createTestAccount();
 
             // create reusable transporter object using the default SMTP transport
@@ -278,11 +278,11 @@ app.post("/sendmail", async function (req, res) {
                 ". Run to the exit</b> <p>Code4 fire alarming system. Thank you</p>", // html body
             });
 
-            console.log("Message sent: %s", info.messageId);
+         //   console.log("Message sent: %s", info.messageId);
             // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
 
             // Preview only available when sending through an Ethereal account
-            console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+           // console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
             // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
           }
         }
@@ -295,8 +295,8 @@ app.post("/sendmail", async function (req, res) {
       ) {
         if (err1) {
         } else {
-          console.log("this is result 2" + result2["email"]);
-          console.log("this is result 2" + fields2);
+         // console.log("this is result 2" + result2["email"]);
+          //console.log("this is result 2" + fields2);
 
           Object.keys(result2).forEach(async function (key) {
             var row = result2[key];
@@ -328,11 +328,11 @@ app.post("/sendmail", async function (req, res) {
                 ". Take immediate action</b>", // html body
             });
 
-            console.log("Message sent: %s", info.messageId);
+            //console.log("Message sent: %s", info.messageId);
             // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
 
             // Preview only available when sending through an Ethereal account
-            console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+            //console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
             // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
           });
         }

@@ -48,7 +48,7 @@ public class AddNewSensorController implements Initializable {
         System.setProperty("java.security.policy", "file:allowall.policy");
        try {
              Registry reg =LocateRegistry.getRegistry("127.0.0.1",2000);
-            sensorService = (SensorService) reg.lookup("sensorServer");
+             sensorService = (SensorService) reg.lookup("sensorServer");
            
  
         } catch (Exception e) {
@@ -65,9 +65,9 @@ public class AddNewSensorController implements Initializable {
         floor=sFloor.getText().toString();
         room=sRoom.getText().toString();
         if (name.equals("") || floor.equals("") || room.equals("")) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Warining");
-               alert.setHeaderText("All fields are mandatory!!!");
+                alert.setHeaderText("All fields are mandatory!!!");
                 alert.showAndWait().ifPresent(rs -> {
                     if (rs == ButtonType.OK) {
                        // System.out.println("Pressed OK.");
@@ -80,25 +80,25 @@ public class AddNewSensorController implements Initializable {
              try {
                   
                 String newMess= sensorService.addSensor(name , floor,room,0);
-                  if (newMess.startsWith("Successfull")) {
+                if (newMess.startsWith("Successfull")) {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Successfull");
-               alert.setHeaderText(name+" added successfully");
-                alert.showAndWait().ifPresent(rs -> {
-                    if (rs == ButtonType.OK) {
-                       // System.out.println("Pressed OK.");
-                    }
-                 }); 
+                    alert.setTitle("Successfull");
+                    alert.setHeaderText(name+" added successfully");
+                    alert.showAndWait().ifPresent(rs -> {
+                        if (rs == ButtonType.OK) {
+                           // System.out.println("Pressed OK.");
+                        }
+                     }); 
                  }else{
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText(newMess);
+                      Alert alert = new Alert(Alert.AlertType.ERROR);
+                      alert.setTitle("Error");
+                      alert.setHeaderText(newMess);
                
-                alert.showAndWait().ifPresent(rs -> {
-                    if (rs == ButtonType.OK) {
-                       // System.out.println("Pressed OK.");
-                    }
-                 });    
+                        alert.showAndWait().ifPresent(rs -> {
+                            if (rs == ButtonType.OK) {
+                               // System.out.println("Pressed OK.");
+                            }
+                         });    
                   }
                   
            

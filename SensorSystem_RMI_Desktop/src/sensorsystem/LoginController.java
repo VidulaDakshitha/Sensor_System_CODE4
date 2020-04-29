@@ -55,13 +55,10 @@ public class LoginController implements Initializable {
         // TODO
         System.setProperty("java.security.policy", "file:allowall.policy");
        try {
-             Registry reg =LocateRegistry.getRegistry("127.0.0.1",2000);
+            Registry reg =LocateRegistry.getRegistry("127.0.0.1",2000);
             sensorService = (SensorService) reg.lookup("sensorServer");
-           
- 
         } catch (Exception e) {
-            
-            System.err.println("error "+e);
+           System.err.println("error "+e);
         } 
     }
     
@@ -76,49 +73,38 @@ public class LoginController implements Initializable {
         try{
             String logMsg = sensorService.login(pass);
             System.out.println(logMsg);
-        if(logMsg.startsWith("Logged"))
-        {          
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainWindow.fxml"));
-            Parent root = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setTitle("Sensor System");
-            stage.getIcons().add(new Image(this.getClass().getResourceAsStream("logoNew-removebg-preview.png")));
-            stage.setScene(new Scene(root));  
-            stage.show();
-            Stage stageClose=(Stage)loginBTN.getScene().getWindow();
-            stageClose.close();
-        }
-        else if(logMsg.startsWith("Wrong"))
-        {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Unauthorized");
-            alert.setHeaderText("Wrong password");
-            alert.showAndWait().ifPresent(rs -> {
-            if (rs == ButtonType.OK) {
-               // System.out.println("Pressed OK.");
+            if(logMsg.startsWith("Logged")){          
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainWindow.fxml"));
+                Parent root = (Parent) fxmlLoader.load();
+                Stage stage = new Stage();
+                stage.setTitle("Sensor System");
+                stage.getIcons().add(new Image(this.getClass().getResourceAsStream("logoNew-removebg-preview.png")));
+                stage.setScene(new Scene(root));  
+                stage.show();
+                Stage stageClose=(Stage)loginBTN.getScene().getWindow();
+                stageClose.close();
+            }else if(logMsg.startsWith("Wrong")){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Unauthorized");
+                alert.setHeaderText("Wrong password");
+                alert.showAndWait().ifPresent(rs -> {
+                if (rs == ButtonType.OK) {
+                   // System.out.println("Pressed OK.");
+                }
+                }); 
+            }else{
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Error");
+                alert.setHeaderText("Oopzz!! Something went wrong!!");
+                alert.showAndWait().ifPresent(rs -> {
+                if (rs == ButtonType.OK) {
+                  //  System.out.println("Pressed OK.");
+                }
+                }); 
             }
-            }); 
-        }
-        else
-        {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Error");
-            alert.setHeaderText("Oopzz!! Something went wrong!!");
-            alert.showAndWait().ifPresent(rs -> {
-            if (rs == ButtonType.OK) {
-              //  System.out.println("Pressed OK.");
-            }
-            }); 
-        }
-        }catch(Exception e)
-        {
+        }catch(Exception e){
             e.printStackTrace();
         }
-       
-        
-        
-        
-        
     }
         
     

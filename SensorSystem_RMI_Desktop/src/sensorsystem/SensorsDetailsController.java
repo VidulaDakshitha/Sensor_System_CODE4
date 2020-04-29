@@ -66,21 +66,18 @@ public class SensorsDetailsController implements Initializable{
     private TableColumn<?, ?> room;
     @FXML
     private TableColumn<?, ?> colavel;
-    
+    @FXML
+    private TableColumn<?, ?> smokelevel;
+    @FXML
+    private TableColumn<?, ?> status;
     
 
     /**
      * Initializes the controller class.
      */
-    ObservableList<Sensor> observableList = FXCollections.observableArrayList(
- 
-    
-    );
+    ObservableList<Sensor> observableList = FXCollections.observableArrayList();
     ArrayList<Integer> sensorId;
-    @FXML
-    private TableColumn<?, ?> smokelevel;
-    @FXML
-    private TableColumn<?, ?> status;
+   
     
     
     @Override 
@@ -103,42 +100,42 @@ public class SensorsDetailsController implements Initializable{
            
 
             
-        sensorTable.setOnMouseClicked(new EventHandler<MouseEvent>(){
-           @Override
-           public void handle(MouseEvent event) {
-                if (event.getButton()==MouseButton.PRIMARY&&event.getClickCount()==2) {
-                    try{
-                    System.out.println("Mouse clicked");
-                    
-                    Sensor pos = sensorTable.getSelectionModel().getSelectedItem();
-                    
-                    editID = pos.getID();
-                    String tempName = pos.getName();
-                    String tempFloor = pos.getFloor();
-                    String tempRoom = pos.getRoom();
-                    String status = pos.getStatus();
-                    //System.out.println("This statt: " + status);
-                    
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("editSensor.fxml"));
-                    Parent root = (Parent) fxmlLoader.load();
-        
-                    EditSensorController controller = fxmlLoader.getController();
-                    controller.transferData(editID, tempName, tempFloor, tempRoom, status);
-        
-                    Stage stage = new Stage();
-                    stage.setTitle("Sensor System");
-                    stage.getIcons().add(new Image(this.getClass().getResourceAsStream("logoNew-removebg-preview.png")));
-                    stage.setScene(new Scene(root));  
-                    stage.show();
-                    
-                    }catch(Exception e){
-                        e.printStackTrace();
-                    }
-                }else if(event.getButton()==MouseButton.SECONDARY){
-                          
-                }   
-           }
-        });
+            sensorTable.setOnMouseClicked(new EventHandler<MouseEvent>(){
+               @Override
+               public void handle(MouseEvent event) {
+                    if (event.getButton()==MouseButton.PRIMARY&&event.getClickCount()==2) {
+                        try{
+                        System.out.println("Mouse clicked");
+
+                        Sensor pos = sensorTable.getSelectionModel().getSelectedItem();
+
+                        editID = pos.getID();
+                        String tempName = pos.getName();
+                        String tempFloor = pos.getFloor();
+                        String tempRoom = pos.getRoom();
+                        String status = pos.getStatus();
+                        
+
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("editSensor.fxml"));
+                        Parent root = (Parent) fxmlLoader.load();
+
+                        EditSensorController controller = fxmlLoader.getController();
+                        controller.transferData(editID, tempName, tempFloor, tempRoom, status);
+
+                        Stage stage = new Stage();
+                        stage.setTitle("Sensor System");
+                        stage.getIcons().add(new Image(this.getClass().getResourceAsStream("logoNew-removebg-preview.png")));
+                        stage.setScene(new Scene(root));  
+                        stage.show();
+
+                        }catch(Exception e){
+                            e.printStackTrace();
+                        }
+                    }else if(event.getButton()==MouseButton.SECONDARY){
+
+                    }   
+               }
+            });
            
             String data = sensorService.getSernsors();
             JSONArray jSONArray = new JSONArray(data);
@@ -151,18 +148,14 @@ public class SensorsDetailsController implements Initializable{
                 sensorId.add(Integer.parseInt(jSONObject.get("id").toString().trim()));
                 Sensor sensor =new Sensor(Integer.parseInt(jSONObject.get("id").toString().trim()),jSONObject.get("name").toString().trim(), jSONObject.get("floor").toString().trim(), jSONObject.get("room").toString().trim(),Double.parseDouble(jSONObject.get("colevel").toString()), jSONObject.get("status").toString().trim(),Double.parseDouble(jSONObject.get("smokelevel").toString()) );
                 sensorTable.getItems().add(sensor);
-               /* System.out.println("smoke level "+sensor.getSmokeLevel());
-                System.out.println("status "+sensor.getStatus());
-                System.out.println("fact status"+status.getCellData(i));
-                System.out.println("fact "+smokelevel.getCellData(i));
-                */
+               
                 
                   if (sensor.getLevel()>=70) {
-                  System.out.println("co2 wadi "+sensor.getName());
-                    Notifications.create()
-                    .title("CO2 Lovel is High ")
-                    .text("Floor"+sensor.getFloor()+" Room"+sensor.getRoom()+" co2 wadi ")
-                    .showWarning();
+                        System.out.println("co2 wadi "+sensor.getName());
+                        Notifications.create()
+                            .title("CO2 Lovel is High ")
+                            .text("Floor"+sensor.getFloor()+" Room"+sensor.getRoom()+" co2 wadi ")
+                            .showWarning();
                 }
             }
             
@@ -176,11 +169,7 @@ public class SensorsDetailsController implements Initializable{
             }, 0, 15000);
            
             
-          
-            
- 
         } catch (Exception e) {
-            
             System.err.println("error "+e);
         }
     } 
@@ -191,24 +180,17 @@ public class SensorsDetailsController implements Initializable{
         
        try {
              String data = sensorService.getSernsors();
-            JSONArray jSONArray = new JSONArray(data);
+             JSONArray jSONArray = new JSONArray(data);
                 
-            System.out.println(jSONArray.length());
+            //System.out.println(jSONArray.length());
                  sensorTable.getItems().clear();
             for (int i = 0; i < jSONArray.length(); i++) {
                 JSONObject jSONObject = jSONArray.getJSONObject(i);
                 //System.out.println(jSONObject);
                 Sensor sensor =new Sensor(Integer.parseInt(jSONObject.get("id").toString().trim()),jSONObject.get("name").toString().trim(), jSONObject.get("floor").toString().trim(), jSONObject.get("room").toString().trim(),Double.parseDouble(jSONObject.get("colevel").toString()), jSONObject.get("status").toString().trim(),Double.parseDouble(jSONObject.get("smokelevel").toString()) );
                 sensorTable.getItems().add(sensor);
-              //  System.out.println("smoke level "+sensor.getSmokeLevel());
-              //  System.out.println("status "+sensor.getStatus());
-                if (sensor.getLevel()>=70) {
-                  /*  System.out.println("co2 wadi "+sensor.getName());
-                    Notifications.create()
-                    .title("CO2 Lovel is Heigh ")
-                    .text("Floor"+sensor.getFloor()+" Room"+sensor.getRoom()+" co2 wadi ")
-                    ;*/
-                }
+              
+               
             }
         } catch (Exception e) {
             System.err.println("error "+e);
