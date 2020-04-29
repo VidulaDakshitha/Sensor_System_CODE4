@@ -51,11 +51,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 
-/**
- * FXML Controller class
- *
- * @author Dilshan
- */
+
 public class SensorsDetailsController implements Initializable{
 
     private int editID;

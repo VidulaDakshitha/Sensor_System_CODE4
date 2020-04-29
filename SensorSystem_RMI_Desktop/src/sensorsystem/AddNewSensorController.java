@@ -19,11 +19,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 
-/**
- * FXML Controller class
- *
- * @author Dilshan
- */
+
 public class AddNewSensorController implements Initializable {
 
     @FXML
@@ -87,7 +83,7 @@ public class AddNewSensorController implements Initializable {
                   if (newMess.startsWith("Successfull")) {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Successfull");
-               alert.setHeaderText("Sensor "+name+" Add successfully");
+               alert.setHeaderText(name+" added successfully");
                 alert.showAndWait().ifPresent(rs -> {
                     if (rs == ButtonType.OK) {
                         System.out.println("Pressed OK.");

@@ -41,11 +41,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author Dilshan
- */
+
 public class MainWindowController implements Initializable {
     
     
@@ -201,7 +197,7 @@ public class MainWindowController implements Initializable {
                   if (newMess.startsWith("Successfull")) {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Successfull");
-               alert.setHeaderText("Sensor "+name+" Add successfully");
+               alert.setHeaderText(name+" added successfully");
                 alert.showAndWait().ifPresent(rs -> {
                     if (rs == ButtonType.OK) {
                         System.out.println("Pressed OK.");

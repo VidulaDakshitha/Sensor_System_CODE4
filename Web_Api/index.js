@@ -258,8 +258,8 @@ app.post("/sendmail", async function (req, res) {
               port: 587,
               secure: false, // true for 465, false for other ports
               auth: {
-                user: "augustus.runolfsson@ethereal.email", // generated ethereal user
-                pass: "tYKK6XGp9xQuwPapnX", // generated ethereal password
+                user: "therese.tromp17@ethereal.email", // generated ethereal user
+                pass: "huNyF5ez2ZZurK5ckf", // generated ethereal password
               },
             });
 
@@ -310,8 +310,8 @@ app.post("/sendmail", async function (req, res) {
               port: 587,
               secure: false, // true for 465, false for other ports
               auth: {
-                user: "augustus.runolfsson@ethereal.email", // generated ethereal user
-                pass: "tYKK6XGp9xQuwPapnX", // generated ethereal password
+                user: "therese.tromp17@ethereal.email", // generated ethereal user
+                pass: "huNyF5ez2ZZurK5ckf", // generated ethereal password
               },
             });
 

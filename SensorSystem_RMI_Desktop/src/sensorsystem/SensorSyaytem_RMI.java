@@ -17,16 +17,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 
-
-
-
-
-
-
-/**
- *
- * @author Dilshan
- */
 public class SensorSyaytem_RMI extends Application {
     
     @Override

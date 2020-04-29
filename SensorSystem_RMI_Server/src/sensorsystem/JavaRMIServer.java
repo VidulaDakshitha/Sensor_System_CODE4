@@ -33,19 +33,6 @@ import sun.net.www.http.HttpClient;
 
 
 
-
-
-
-
-
-
-
-
-/**
- *
- * @author Dilshan
- */
-
 public class JavaRMIServer extends UnicastRemoteObject implements SensorService{
 
     public JavaRMIServer() throws RemoteException{
@@ -59,23 +46,23 @@ public class JavaRMIServer extends UnicastRemoteObject implements SensorService{
         // TODO code application logic here
         System.setProperty("java.security.policy", "file:allowall.policy");
         try {
-           //final JavaRMIServer jrmi=new JavaRMIServer();
+           final JavaRMIServer jrmi=new JavaRMIServer();
             Registry reg =LocateRegistry.createRegistry(2000);
             reg.rebind("sensorServer", new JavaRMIServer());
              System.out.println ("Service started....");
-//             
-//          
-//               Timer timer = new Timer();
-//            timer.scheduleAtFixedRate(new TimerTask() {
-//                @Override
-//                public void run()  {
-//                    try {
-//                        jrmi.SendMail();
-//                    } catch (Exception ex) {
-//                        Logger.getLogger(JavaRMIServer.class.getName()).log(Level.SEVERE, null, ex);
-//                    }
-//                }
-//            }, 0, 30000);
+             
+          
+               Timer timer = new Timer();
+            timer.scheduleAtFixedRate(new TimerTask() {
+                @Override
+                public void run()  {
+                    try {
+                        jrmi.SendMail();
+                    } catch (Exception ex) {
+                        Logger.getLogger(JavaRMIServer.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }, 0, 30000);
         } catch (Exception e) {
              System.err.println ("err"+e);
         }

@@ -35,11 +35,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-/**
- * FXML Controller class
- *
- * @author kevgo
- */
+
 
 public class LoginController implements Initializable {
 

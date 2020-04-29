@@ -21,10 +21,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
-/**
- *
- * @author Vidula
- */
+
+
 public class SensorApplication {
 
     ArrayList<Integer> sensorId;

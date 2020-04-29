@@ -12,11 +12,6 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.List;
 
-
-/**
- *
- * @author Dilshan
- */
 public interface SensorService extends Remote{
     public String addSensor(String name, String floor, String room, double level) throws  RemoteException;
     public String getSernsors() throws Exception;

@@ -27,11 +27,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author kevgo
- */
+
 public class EditSensorController implements Initializable {
 
     @FXML
