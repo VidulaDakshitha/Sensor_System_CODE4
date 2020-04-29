@@ -9,15 +9,15 @@
    <children>
       <VBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TableView fx:id="sensorTable" prefHeight="569.0" prefWidth="967.0" VBox.vgrow="ALWAYS">
+            <TableView fx:id="sensorTable" prefHeight="569.0" prefWidth="685.0" styleClass="table" stylesheets="@SensorDetails.css" VBox.vgrow="ALWAYS">
               <columns>
                   
-                <TableColumn fx:id="name" prefWidth="100.0" text="Sensor Name" />
-                <TableColumn fx:id="floor" minWidth="0.0" prefWidth="100.0" text=" Room Name/id" />
-                  <TableColumn fx:id="room" minWidth="0.0" prefWidth="100.0" text="Floor Name/ID" />
-                  <TableColumn fx:id="colavel" minWidth="0.0" prefWidth="100.0" text="Co2 Level" />
-                  <TableColumn fx:id="smokelevel" minWidth="0.0" prefWidth="100.0" text="Smoke Level" />
-                  <TableColumn fx:id="status" minWidth="0.0" prefWidth="100.0" text="Status" />
+                <TableColumn fx:id="name" prefWidth="115.0" styleClass="tdth" text="Sensor Name" />
+                <TableColumn fx:id="floor" minWidth="0.0" prefWidth="123.0" styleClass="tdth" text=" Room Name/id" />
+                  <TableColumn fx:id="room" minWidth="0.0" prefWidth="112.0" styleClass="tdth" text="Floor Name/ID" />
+                  <TableColumn fx:id="colavel" minWidth="0.0" prefWidth="104.0" styleClass="tdth" text="Co2 Level" />
+                  <TableColumn fx:id="smokelevel" minWidth="0.0" prefWidth="110.0" styleClass="tdth" text="Smoke Level" />
+                  <TableColumn fx:id="status" minWidth="0.0" prefWidth="107.0" styleClass="tdth" text="Status" />
                   
               </columns>
                <columnResizePolicy>

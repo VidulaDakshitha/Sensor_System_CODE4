@@ -113,8 +113,10 @@ public class MainWindowController implements Initializable {
         timeline.play();
         addNewBox.getChildren().remove(0);
        
-        addbtn.setTextFill(Color.AQUA);
-        sensorbtn.setTextFill(Color.GRAY);
+      sensorbtn.getStyleClass().remove("active");
+        sensorbtn.getStyleClass().add("box");
+         addbtn.getStyleClass().remove("box");
+        addbtn.getStyleClass().add("active");
     }
 
     @FXML
@@ -134,8 +136,11 @@ public class MainWindowController implements Initializable {
         
         timeline.play();
         addNewBox.getChildren().remove(0);
-         addbtn.setTextFill(Color.GRAY);
-        sensorbtn.setTextFill(Color.AQUA);
+        // addbtn.setTextFill(Color.GRAY);
+         addbtn.getStyleClass().remove("active");
+        addbtn.getStyleClass().add("box");
+         sensorbtn.getStyleClass().remove("box");
+        sensorbtn.getStyleClass().add("active");
     }
     private void ShowAddNew(Boolean x){
         if (x) {
@@ -149,8 +154,8 @@ public class MainWindowController implements Initializable {
         
         addNewBox.setVisible(true);
        
-        addbtn.setTextFill(Color.AQUA);
-        sensorbtn.setTextFill(Color.GRAY);
+      //  addbtn.setTextFill(Color.AQUA);
+      //  sensorbtn.setTextFill(Color.GRAY);
         }else{
              addNewBox.setPrefWidth(0);
          addNewBox.setMaxWidth(0);
@@ -164,11 +169,11 @@ public class MainWindowController implements Initializable {
          
          addNewBox.setVisible(false);
        
-        sensorbtn.setTextFill(Color.AQUA);
-        addbtn.setTextFill(Color.GRAY);
+       // sensorbtn.setTextFill(Color.AQUA);
+      //  addbtn.setTextFill(Color.GRAY);
         
-         addbtn.setTextFill(Color.AQUA);
-        sensorbtn.setTextFill(Color.GRAY);
+      //   addbtn.setTextFill(Color.AQUA);
+      //  sensorbtn.setTextFill(Color.GRAY);
         }
     }
 

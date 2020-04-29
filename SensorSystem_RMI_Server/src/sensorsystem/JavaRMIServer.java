@@ -73,7 +73,7 @@ public class JavaRMIServer extends UnicastRemoteObject implements SensorService{
 
     @Override
     public String addSensor(String name, String floor, String room, double d) throws RemoteException {
-         System.out.println("Call Funtion"); //To change body of generated methods, choose Tools | Templates.
+       //  System.out.println("Call Funtion"); //To change body of generated methods, choose Tools | Templates.
          
         
         try {
@@ -105,7 +105,7 @@ public class JavaRMIServer extends UnicastRemoteObject implements SensorService{
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
                 
                 String output = br.readLine();
-            System.out.println(output);
+           // System.out.println(output);
             return "Successfull add";
             
         } catch (Exception e) {

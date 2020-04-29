@@ -14,12 +14,12 @@
          <children>
             <VBox fx:id="addNewVbox" alignment="CENTER" prefHeight="403.0" prefWidth="382.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="332.0" text="ADD NEW SENSOR">
+                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="332.0" text="ADD NEW SENSOR" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="37.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="722.0" text="SENSOR NAME">
+                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="722.0" text="SENSOR NAME" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -27,12 +27,15 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField fx:id="sName" prefHeight="79.0" prefWidth="382.0" style="-fx-background-color: #5A5F5E;">
+                  <TextField fx:id="sName" prefHeight="79.0" prefWidth="382.0" styleClass="textBox" stylesheets="@addNewSensor.css">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
                   </TextField>
-                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="721.0" text="FLOOR NAME/NUMBER">
+                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="721.0" text="FLOOR NAME/NUMBER" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -40,12 +43,15 @@
                         <Insets top="30.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField fx:id="sFloor" prefHeight="80.0" prefWidth="382.0" style="-fx-background-color: #5A5F5E;">
+                  <TextField fx:id="sFloor" prefHeight="80.0" prefWidth="382.0" styleClass="textBox" stylesheets="@addNewSensor.css">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
                   </TextField>
-                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="721.0" text="ROOM NAME/NUMBER">
+                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="721.0" text="ROOM NAME/NUMBER" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -53,14 +59,17 @@
                         <Insets top="30.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField fx:id="sRoom" prefHeight="77.0" prefWidth="382.0" style="-fx-background-color: #5A5F5E;">
+                  <TextField fx:id="sRoom" prefHeight="77.0" prefWidth="382.0" styleClass="textBox" stylesheets="@addNewSensor.css">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
                   </TextField>
-                  <Button fx:id="addSensorBtn" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#addNewSensor" prefHeight="39.0" prefWidth="129.0" style="-fx-background-color: #0F207E;" text="Add" textFill="WHITE">
+                  <Button fx:id="addSensorBtn" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#addNewSensor" prefHeight="39.0" prefWidth="129.0" stylesheets="@addNewSensor.css" text="Add" textFill="WHITE">
                      <VBox.margin>
-                        <Insets top="30.0" />
+                        <Insets bottom="20.0" top="30.0" />
                      </VBox.margin>
                      <font>
                         <Font name="System Bold" size="18.0" />

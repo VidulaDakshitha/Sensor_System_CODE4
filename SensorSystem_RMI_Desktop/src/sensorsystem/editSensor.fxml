@@ -4,25 +4,24 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #13477A;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="sensorsystem.EditSensorController">
-   <HBox style="-fx-background-color: #13477A;" VBox.vgrow="ALWAYS" />
-   <VBox fx:id="addNewBox" alignment="CENTER" fillWidth="false" prefHeight="499.0" prefWidth="815.0" style="-fx-background-color: #13477A;">
+<AnchorPane id="AnchorPane" prefHeight="415.0" prefWidth="600.0" style="-fx-background-color: #13477A;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sensorsystem.EditSensorController">
+   <VBox fx:id="addNewBox" alignment="CENTER" fillWidth="false" prefHeight="499.0" prefWidth="815.0" style="-fx-background-color: #13477A;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
          <VBox fx:id="addNewVbox" alignment="CENTER" prefHeight="481.0" prefWidth="314.0">
             <children>
-               <Label alignment="CENTER" prefHeight="17.0" prefWidth="332.0" text="EDIT SENSOR">
+               <Label alignment="CENTER" prefHeight="17.0" prefWidth="332.0" text="EDIT SENSOR" textFill="WHITE">
                   <font>
                      <Font name="System Bold" size="35.0" />
                   </font>
                </Label>
-               <Label alignment="CENTER" prefHeight="17.0" prefWidth="722.0" text="SENSOR NAME">
+               <Label alignment="CENTER" prefHeight="17.0" prefWidth="722.0" text="SENSOR NAME" textFill="WHITE">
                   <font>
                      <Font name="System Bold" size="14.0" />
                   </font>
@@ -30,25 +29,12 @@
                      <Insets top="10.0" />
                   </VBox.margin>
                </Label>
-               <TextField fx:id="sName" focusTraversable="false" prefHeight="46.0" prefWidth="314.0" style="-fx-background-color: #5A5F5E;">
+               <TextField fx:id="sName" focusTraversable="false" prefHeight="46.0" prefWidth="314.0" styleClass="textBox" stylesheets="@editDetails.css">
                   <VBox.margin>
                      <Insets top="10.0" />
                   </VBox.margin>
                </TextField>
-               <Label alignment="CENTER" prefHeight="17.0" prefWidth="721.0" text="FLOOR NAME/NUMBER">
-                  <font>
-                     <Font name="System Bold" size="14.0" />
-                  </font>
-                  <VBox.margin>
-                     <Insets top="30.0" />
-                  </VBox.margin>
-               </Label>
-               <TextField fx:id="sFloor" prefHeight="45.0" prefWidth="314.0" style="-fx-background-color: #5A5F5E;">
-                  <VBox.margin>
-                     <Insets top="10.0" />
-                  </VBox.margin>
-               </TextField>
-               <Label alignment="CENTER" prefHeight="17.0" prefWidth="721.0" text="ROOM NAME/NUMBER">
+               <Label alignment="CENTER" prefHeight="17.0" prefWidth="721.0" text="FLOOR NAME/NUMBER" textFill="WHITE">
                   <font>
                      <Font name="System Bold" size="14.0" />
                   </font>
@@ -56,23 +42,56 @@
                      <Insets top="30.0" />
                   </VBox.margin>
                </Label>
-               <TextField fx:id="sRoom" prefHeight="43.0" prefWidth="314.0" style="-fx-background-color: #5A5F5E;">
+               <TextField fx:id="sFloor" prefHeight="45.0" prefWidth="314.0" styleClass="textBox" stylesheets="@editDetails.css">
                   <VBox.margin>
                      <Insets top="10.0" />
                   </VBox.margin>
                </TextField>
-               
-                <RadioButton fx:id="Active" selected="true" text="Active" style="-fx-background-color: WHITE;" textFill="GREEN">
+               <Label alignment="CENTER" prefHeight="17.0" prefWidth="721.0" text="ROOM NAME/NUMBER" textFill="WHITE">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+                  <VBox.margin>
+                     <Insets top="30.0" />
+                  </VBox.margin>
+               </Label>
+               <TextField fx:id="sRoom" prefHeight="43.0" prefWidth="314.0" styleClass="textBox" stylesheets="@editDetails.css">
+                  <VBox.margin>
+                     <Insets top="10.0" />
+                  </VBox.margin>
+               </TextField>
+               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                  <children>
+                     
+                      <RadioButton fx:id="Active" selected="true" style="-fx-background-color: #13477A;" text="Active" textFill="#07ff07">
+                              <toggleGroup>
+                                 <ToggleGroup fx:id="mainGroup" />
+                              </toggleGroup>
+                        <font>
+                           <Font name="System Bold Italic" size="14.0" />
+                        </font>
+                      </RadioButton>
+                      <RadioButton fx:id="Inactive" style="-fx-background-color: #13477A;" text="Inactive" textFill="RED">
                         <toggleGroup>
-                           <ToggleGroup fx:id="mainGroup" />
+                           <ToggleGroup fx:id="group1" />
                         </toggleGroup>
-                </RadioButton>
-                <RadioButton fx:id="Inactive" text="Inactive" toggleGroup="$group1" style="-fx-background-color: WHITE;" textFill="RED" />
-               
-               
-               <Button fx:id="addSensorBtn" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#editSensor" prefHeight="15.0" prefWidth="70.0" style="-fx-background-color: #0F207E;" text="EDIT" textFill="WHITE">
+                        <HBox.margin>
+                           <Insets left="20.0" />
+                        </HBox.margin>
+                        <font>
+                           <Font name="System Bold" size="14.0" />
+                        </font>
+                     </RadioButton>
+                  </children>
                   <VBox.margin>
-                     <Insets top="30.0" />
+                     <Insets top="20.0" />
+                  </VBox.margin>
+               </HBox>
+               
+                           
+               <Button fx:id="addSensorBtn" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#editSensor" prefHeight="15.0" prefWidth="70.0" stylesheets="@editDetails.css" text="Save" textFill="WHITE">
+                  <VBox.margin>
+                     <Insets bottom="20.0" top="30.0" />
                   </VBox.margin>
                   <font>
                      <Font name="System Bold" size="15.0" />

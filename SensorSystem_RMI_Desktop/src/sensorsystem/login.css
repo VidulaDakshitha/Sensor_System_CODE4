@@ -1,0 +1,24 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 29, 2020, 12:00:23 AM
+    Author     : Dilshan
+*/
+.passBox{
+     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0, 5, 5);
+     -fx-background-radius:5;
+}
+.button{
+     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 5, 5);
+     -fx-background-radius:10;
+     -fx-background-color:  #0285E8;
+     
+}
+.button:hover{
+   -fx-opacity: 0.9;
+   -fx-text-fill: white;
+  
+}

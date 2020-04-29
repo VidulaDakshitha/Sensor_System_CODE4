@@ -126,7 +126,7 @@ app.get("/getSensorData", async function (req, res) {
   //console.log("get All data");
 
   try {
-    await con.query("SELECT * FROM `sensors`", function (err, result, fields) {
+    await con.query("SELECT * FROM `sensors` order by status ASC ", function (err, result, fields) {
       if (err) {
         res.status(500).send("error");
       } else {
