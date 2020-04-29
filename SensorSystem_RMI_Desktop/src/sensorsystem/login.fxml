@@ -23,16 +23,17 @@
                         <Image url="@logoNew-removebg-preview.png" />
                      </image>
                   </ImageView>
-                  <Label alignment="CENTER" contentDisplay="CENTER" text="BY CODE4" textAlignment="CENTER" textFill="#050f42">
-                     <font>
-                        <Font name="System Bold Italic" size="20.0" />
-                     </font>
-                  </Label>
                   <Label alignment="CENTER" text="SENSOR " textFill="#7e7e80">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="BY CODE4" textAlignment="CENTER" textFill="#050f42">
+                     <font>
+                        <Font name="System Bold Italic" size="20.0" />
+                     </font>
+                  </Label>
+                  
                </children>
             </HBox>
          </top>

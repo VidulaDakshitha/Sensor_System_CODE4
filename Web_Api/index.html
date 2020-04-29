@@ -112,7 +112,7 @@
           td5.innerHTML = event.smokelevel;
           td6.innerHTML = event.status;
 
-          if (event.colevel >= 5 || event.smokelevel >= 5) {
+          if (event.colevel > 5 || event.smokelevel > 5) {
             tr.setAttribute("class", "danger");
           } else if(event.status == "Inactive"){
             tr.setAttribute("class", "inactive");
