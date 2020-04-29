@@ -152,10 +152,7 @@ public class SensorsDetailsController implements Initializable{
                }
             });
            
-            updatetable();
-           
-               
-         
+
             /*
             The sensor details should be updated every 15 seconds 
             */
@@ -213,7 +210,7 @@ public class SensorsDetailsController implements Initializable{
                 
                 
                   if (sensor.getLevel()>=5) {
-                      mess+="Floor "+sensor.getFloor()+" Room "+sensor.getRoom()+"\n";
+                      mess+="Floor: "+sensor.getFloor()+" Room: "+sensor.getRoom()+"\n";
                      
                 }
             }

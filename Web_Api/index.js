@@ -247,7 +247,6 @@ app.post("/sendmail", async function (req, res) {
 
         if (result.length != 0) {
           for (var i = 0; i < result.length; i++) {
-            console.log(result[i]["email"].toString());
 
            // console.log("visited the function");
             let testAccount = await nodemailer.createTestAccount();
@@ -258,8 +257,8 @@ app.post("/sendmail", async function (req, res) {
               port: 587,
               secure: false, // true for 465, false for other ports
               auth: {
-                user: "therese.tromp17@ethereal.email", // generated ethereal user
-                pass: "huNyF5ez2ZZurK5ckf", // generated ethereal password
+                user: "claude.lowe@ethereal.email", // generated ethereal user
+                pass: "HASKvX9Qu2WHA4CAC", // generated ethereal password
               },
             });
 
@@ -300,7 +299,7 @@ app.post("/sendmail", async function (req, res) {
 
           Object.keys(result2).forEach(async function (key) {
             var row = result2[key];
-            console.log(row.email);
+            
 
             let testAccount = await nodemailer.createTestAccount();
 
@@ -310,8 +309,8 @@ app.post("/sendmail", async function (req, res) {
               port: 587,
               secure: false, // true for 465, false for other ports
               auth: {
-                user: "therese.tromp17@ethereal.email", // generated ethereal user
-                pass: "huNyF5ez2ZZurK5ckf", // generated ethereal password
+                user: "claude.lowe@ethereal.email", // generated ethereal user
+                pass: "HASKvX9Qu2WHA4CAC", // generated ethereal password
               },
             });
 

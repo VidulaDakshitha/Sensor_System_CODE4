@@ -13,8 +13,8 @@
               <columns>
                   
                 <TableColumn fx:id="name" prefWidth="115.0" styleClass="tdth" text="Sensor Name" />
-                <TableColumn fx:id="floor" minWidth="0.0" prefWidth="123.0" styleClass="tdth" text=" Room Name/id" />
-                  <TableColumn fx:id="room" minWidth="0.0" prefWidth="112.0" styleClass="tdth" text="Floor Name/ID" />
+                <TableColumn fx:id="floor" minWidth="0.0" prefWidth="123.0" styleClass="tdth" text="Floor Name/ID" />
+                  <TableColumn fx:id="room" minWidth="0.0" prefWidth="112.0" styleClass="tdth" text="Room Name/ID" />
                   <TableColumn fx:id="colavel" minWidth="0.0" prefWidth="104.0" styleClass="tdth" text="Co2 Level" />
                   <TableColumn fx:id="smokelevel" minWidth="0.0" prefWidth="110.0" styleClass="tdth" text="Smoke Level" />
                   <TableColumn fx:id="status" minWidth="0.0" prefWidth="107.0" styleClass="tdth" text="Status" />

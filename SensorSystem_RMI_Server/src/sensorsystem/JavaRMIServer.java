@@ -184,7 +184,7 @@ public class JavaRMIServer extends UnicastRemoteObject implements SensorService{
     }
 
     @Override
-    public String editSensor(int id, String name, String room, String floor, String status) throws Exception {
+    public String editSensor(int id, String name, String floor, String room, String status) throws Exception {
         /*
         this method use to update existing sensor details.
         */
