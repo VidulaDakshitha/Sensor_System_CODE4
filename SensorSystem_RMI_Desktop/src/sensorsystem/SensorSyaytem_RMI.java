@@ -10,7 +10,10 @@ package sensorsystem;
 
 
 
+import java.util.Timer;
+import java.util.TimerTask;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -26,17 +29,17 @@ public class SensorSyaytem_RMI extends Application {
         
         Scene scene = new Scene(root);
         stage.setTitle("Sensor System");
-       stage.getIcons().add(new Image(this.getClass().getResourceAsStream("logoNew-removebg-preview.png")));
+        stage.getIcons().add(new Image(this.getClass().getResourceAsStream("logoNew-removebg-preview.png")));
         stage.setScene(scene);
         stage.show();
+        
     }
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-      
-       
+         
          launch(args);
          
    }

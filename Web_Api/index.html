@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="logoNew-removebg-preview.png">
+    <link rel="icon" href="resourse/logoNew-removebg-preview.png">
     <title>Sensor System</title>
     <link
       rel="stylesheet"
@@ -11,51 +11,69 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="resourse/push.js"></script>
+   <link rel="stylesheet" href="resourse/main.css">
     <style>
-      body {
-      }
-      table {
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-      }
 
-		
-      td,
-      th {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
-      }
-
-      .tr:nth-child(even) {
-        background-color: #dddddd;
-      }
-
-      h1 {
-        text-align: center;
-        padding: 20px;
-        color: #f8004d;
-      }
-      .danger {
-        color: white;
-        background-color: red;
-      }
-
-      .inactive {
-        color: white;
-        background-color: #000000da;
-      }
     </style>
   </head>
 
   <body>
-    <h1><img src="head.jpg" /></h1>
-    <div class="container">
-      <div class="row" id="table"></div>
+   <div class="container">
+      <div class="row">
+      	<div class="col-md-4">
+      		
+      	</div>
+      		<div class="col-md-4">
+      		<h1>Sensor System</h1>
+      	</div>
+      		<div class="col-md-4">
+				 <div class="box">
+		   			<p id="p" >Show Notification</p>
+				   <label class="switch">
+					   <input type="checkbox" id="shown" value="show" onClick="showNotification()" checked>
+					  <span class="slider round"></span>
+				  </label>
+	  			</div>
+      	</div>
+       </div>
     </div>
+      
+  
+  
+   
+    
+    <div class="container">
+      <div class="row" id="table">
 
+      	
+      	
+      </div>
+   
+      
+      
+    </div>
+  
     <script>
+		var isShowNotification=true;
+		var mess="";
+		function showNotification(){
+			var check= document.getElementById('shown');
+			var p= document.getElementById('p');
+			console.log();
+			if(check.checked){
+				isShowNotification=true;
+				p.innerHTML="Show Notification";
+			}else{
+				isShowNotification=false;
+				p.innerHTML="Hide Notifications";
+			}
+	
+		}
+		
+		
+		
       var div = document.getElementById("table");
       fetch("http://localhost:3000/getSensorData")
         .then((res) => res.json())
@@ -114,6 +132,7 @@
 
           if (event.colevel > 5 || event.smokelevel > 5) {
             tr.setAttribute("class", "danger");
+			mess+="Sensor: "+event.name+" Floor: "+event.floor+" Room: "+event.room+" CO2 Level is High \n";
           } else if(event.status == "Inactive"){
             tr.setAttribute("class", "inactive");
           }else{
@@ -136,6 +155,21 @@
           table.appendChild(tr);
         });
         div.appendChild(table);
+		  
+		  if(isShowNotification){
+			      Push.create("WARNING!!!!",{
+            body: mess,
+            icon: 'resourse/logoNew-removebg-preview.png',
+            timeout: 5000,
+            onClick: function () {
+                window.focus();
+                this.close();
+            }
+        });
+		  }
+		  
+		  
+		  
       }
     </script>
   </body>

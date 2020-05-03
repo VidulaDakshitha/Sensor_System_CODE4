@@ -37,6 +37,9 @@ import javafx.util.Duration;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
+import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.input.KeyCode;
@@ -69,6 +72,8 @@ public class MainWindowController implements Initializable {
     private TextField sRoom;
     @FXML
     private TextField sFloor;
+    
+    private int count = 0;
     
     
     @FXML
@@ -109,12 +114,18 @@ public class MainWindowController implements Initializable {
         This methode use to show add new sensor window.
         when click on add new button this method will be triggered
         */
+       
+       SensorsDetailsController obj = new SensorsDetailsController();
+       
+       
         if (clcikShowAdd) {
+            
            Parent root =FXMLLoader.load(getClass().getResource("AddNewSensor.fxml"));
             Scene scene =  addbtn.getScene();
             root.translateXProperty().set(scene.getWidth());
             addNewBox.getChildren().add(root);
 
+            
             Timeline timeline = new Timeline();
             KeyValue keyValue = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN);
             KeyFrame keyFrame = new KeyFrame(Duration.seconds(1), keyValue);
@@ -138,6 +149,8 @@ public class MainWindowController implements Initializable {
         This methode use to show all sensor details table.
         when click on sensor details button this method will be triggered
         */
+        
+        
         if (!clcikShowAdd) {
             Parent root =FXMLLoader.load(getClass().getResource("SensorsDetails.fxml"));
             Scene scene =  addbtn.getScene();
@@ -157,6 +170,14 @@ public class MainWindowController implements Initializable {
             sensorbtn.getStyleClass().remove("box");
             sensorbtn.getStyleClass().add("active");
             clcikShowAdd=true;
+            
+//        if(count == 1)
+//        {
+//            SensorsDetailsController obj = new SensorsDetailsController();
+//            
+//           
+//        }
+            
         }
         
     }

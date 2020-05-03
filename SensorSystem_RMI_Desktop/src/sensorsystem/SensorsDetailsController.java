@@ -20,6 +20,7 @@ import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
+import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -54,9 +55,10 @@ import org.json.JSONObject;
 
 
 
-public class SensorsDetailsController implements Initializable{
+public class SensorsDetailsController implements Initializable {
 
     private int editID;
+    private int count = 0;
     private SensorService sensorService = null;
     @FXML
     private TableView<Sensor> sensorTable;
@@ -73,19 +75,18 @@ public class SensorsDetailsController implements Initializable{
     @FXML
     private TableColumn<?, ?> status;
     
+    Timer timer = new Timer();
 
     /**
      * Initializes the controller class.
      */
     ObservableList<Sensor> observableList = FXCollections.observableArrayList();
     ArrayList<Integer> sensorId;
-   
     
     
     @Override 
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb)  {
         sensorId= new ArrayList<>();
-        String mess="";
          /*
         this method use to connect rmi server 
         */
@@ -153,21 +154,19 @@ public class SensorsDetailsController implements Initializable{
             });
            
 
-            /*
-            The sensor details should be updated every 15 seconds 
-            */
-            Timer timer = new Timer();
-            timer.scheduleAtFixedRate(new TimerTask() {
+            
+        timer.scheduleAtFixedRate(new TimerTask() {
                 @Override
                 public void run() {
                    Platform.runLater(()->{
-                       
                     updatetable();
-                   });
-                        
+                   }); 
                 }
-            }, 0, 15000);
-           
+        }, 0, 15000);
+            
+        
+            
+    
             
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -181,6 +180,7 @@ public class SensorsDetailsController implements Initializable{
         }
     } 
     
+
     private void showNotification(String mess){
         Toolkit.getDefaultToolkit().beep();// Notification sound
          Notifications.create()
@@ -211,7 +211,6 @@ public class SensorsDetailsController implements Initializable{
                 
                   if (sensor.getLevel()>=5) {
                       mess+="Floor: "+sensor.getFloor()+" Room: "+sensor.getRoom()+"\n";
-                     
                 }
             }
             if (!mess.equals("")) {
@@ -229,6 +228,12 @@ public class SensorsDetailsController implements Initializable{
             });
         }
     }
+
+    /*
+            The sensor details should be updated every 15 seconds 
+            */
+
+   
 
  
     
