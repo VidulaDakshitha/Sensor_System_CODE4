@@ -62,10 +62,10 @@ CREATE TABLE `clients` (
 --
 
 INSERT INTO `clients` (`id`, `name`, `email`, `room`, `phone`) VALUES
-(1, 'vidula', 'viduladakshitha@gmail.com', 1, '+94779819207'),
-(2, 'kevin gomez', 'kevingomez890@gmail.com', 2 ,'+94771986561'),
-(3, 'Dilshan Harendra', 'dilshanharendraperera123@gmail.com', 3, '+94783253430'),
-(4, 'Sathira Lamal', 'sdsat756@gmail.com', 4, '+94717732324');
+(1, 'Vidula Dantanarayana', 'viduladakshitha@gmail.com', 1, '+94771231234'),
+(2, 'Kevin Gomez', 'kevingomez890@gmail.com', 2 ,'+94771231234'),
+(3, 'Dilshan Harendra', 'dilshanharendraperera123@gmail.com', 3, '+94771231234'),
+(4, 'Sathira Lamal', 'sdsat756@gmail.com', 4, '+94771231234');
 
 -- --------------------------------------------------------
 
