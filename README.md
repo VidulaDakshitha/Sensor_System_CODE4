@@ -19,3 +19,4 @@
 6️⃣ If the server is connected, now check the webpage by opening from your browser 😎. (Link: localhost:3000)
 
 7️⃣ Now open the projects folders from Netbeans ⭐. (Project folders: "SensorApplication", "SensorSystem_RMI_Desktop", "SensorSystem_RMI_Server")
+(Recommendation: Better to use Netbeans 8.2 and JDK 8 or 13 😁)
