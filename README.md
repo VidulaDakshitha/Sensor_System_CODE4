@@ -1,7 +1,7 @@
 # Sensor_System_COD4
 This project is regarding a distributed sensor system using RMI_server, Desktop Application, Rest API
 
-# Steps to run the software
+# Steps to install the software
 
 1. Clone the project
 
