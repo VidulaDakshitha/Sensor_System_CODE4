@@ -6,9 +6,11 @@
 
 # How to install the System 🔥
 
-1️⃣ Clone the project
+1️⃣ Clone the project ⚡
 
-2️⃣ Create tables in php my admin. (Make sure to create the database as ds_sensor_system 👌)
+2️⃣ Create a database as "ds_sensor_system" in php my admin. (Make sure Xampp is running 😆)
+
+3️⃣ Import the file named as "ds_sensor_system.sql" which is inside the database folder. 
 
 3. Install node modules to the Web_Api folder according to the video.
 
