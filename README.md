@@ -8,8 +8,7 @@
 
 1️⃣ Clone the project
 
-2️⃣ Create tables in php my admin.
-          ▶️ Make sure to create the database as ds_sensor_system
+2️⃣ Create tables in php my admin. (Make sure to create the database as ds_sensor_system 👌)
 
 3. Install node modules to the Web_Api folder according to the video.
 
