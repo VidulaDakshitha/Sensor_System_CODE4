@@ -6,7 +6,7 @@
 
 # How to install the System 🔥
 
-1. Clone the project
+1️⃣ Clone the project
 
 2. Create tables in php my admin by creating a database, name as ds_sensor_system.
 
