@@ -20,3 +20,23 @@
 
 7️⃣ Now open the projects folders from Netbeans ⭐. (Project folders: "SensorApplication", "SensorSystem_RMI_Desktop", "SensorSystem_RMI_Server")
 (Recommendation: Better to use Netbeans 8.2 and JDK 8 or 13 😁)
+
+🔴 If you get any errors saying that missing some jar files, then resolve them by adding jar files. All the required jar files has been provided in this 👇 directory.
+
+⭕ >> SensorSystem_RMI_Desktop >> lib ⭕
+
+8️⃣ Clean all three projects and build them inside Netbeans ✌️.
+
+9️⃣ Now run "SensorApplication" project and check the webpage that random CO2 & smoke levels will be generating 🙌.
+
+1️⃣0️⃣ Now run "SensorSystem_RMI_Server" project and "SensorSystem_RMI_Desktop" project accordingly. 
+
+
+
+
+
+
+
+
+
+
