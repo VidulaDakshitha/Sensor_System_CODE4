@@ -9,4 +9,4 @@ This project is regarding a distributed sensor system using RMI_server, Desktop 
 
 3. Install node modules to the Web_Api folder according to the video.
 
-* kevin
+* 💪
