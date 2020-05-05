@@ -29,7 +29,15 @@
 
 9️⃣ Now run "SensorApplication" project and check the webpage that random CO2 & smoke levels will be generating 🙌.
 
-1️⃣0️⃣ Now run "SensorSystem_RMI_Server" project and "SensorSystem_RMI_Desktop" project accordingly. 
+1️⃣0️⃣ Now run "SensorSystem_RMI_Server" and "SensorSystem_RMI_Desktop" projects accordingly. 
+
+
+☑️ LOGIN PASSWORD: 123
+
+
+# ENJOY THE SYSTEM 😃👏
+
+🎥 Youtube video LINK: https://youtu.be/Kxac0f36Izk
 
 
 
