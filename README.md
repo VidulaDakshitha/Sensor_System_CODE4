@@ -15,3 +15,5 @@
 4️⃣ Install node modules by a CMD to the Web_Api folder according to the video 👌. (Command: npm install)
 
 5️⃣ After the node module installation is over, run the Rest Api by a CMD 💪. (Command: nodemon)
+
+6️⃣ If the server is connected, now check the webpage by opening from your browser 😎. (Link: localhost:3000)
