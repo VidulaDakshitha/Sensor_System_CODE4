@@ -17,3 +17,5 @@
 5️⃣ After the node module installation is over, run the Rest Api by a CMD 💪. (Command: nodemon)
 
 6️⃣ If the server is connected, now check the webpage by opening from your browser 😎. (Link: localhost:3000)
+
+7️⃣ Now open the projects folders from Netbeans ⭐. (Project folders: "SensorApplication", "SensorSystem_RMI_Desktop", "SensorSystem_RMI_Server")
