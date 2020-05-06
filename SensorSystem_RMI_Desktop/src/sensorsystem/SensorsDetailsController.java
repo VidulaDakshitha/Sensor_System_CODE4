@@ -152,9 +152,12 @@ public class SensorsDetailsController implements Initializable {
                     }   
                }
             });
+          
            
 
-            
+     /**
+     * To update desktop application in every 15sec.
+     */    
         timer.scheduleAtFixedRate(new TimerTask() {
                 @Override
                 public void run() {
